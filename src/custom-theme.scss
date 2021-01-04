@@ -1,0 +1,309 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+$general-typography: mat-typography-config(
+    $font-family:   'Roboto, "Helvetica Neue", sans-serif',
+);
+
+$mat-blue: (
+    50: #e3f2fd,
+    100: #bbdefb,
+    200: #90caf9,
+    300: #64b5f6,
+    400: #42a5f5,
+    500: #0069ff,
+    600: #1e88e5,
+    700: #1976d2,
+    800: #1565c0,
+    900: #0d47a1,
+    A100: #82b1ff,
+    A200: #448aff,
+    A400: #2979ff,
+    A700: #2962ff,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $dark-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $light-primary-text,
+        A400: $light-primary-text,
+        A700: $light-primary-text,
+    )
+);
+
+
+$ngx-primary: mat-palette($mat-blue);
+$ngx-accent: mat-palette($mat-pink, A200, A100, A400);
+$ngx-warn: mat-palette($mat-red);
+
+$light-theme: mat-light-theme((
+    color: (
+        primary: $ngx-primary,
+        accent: $ngx-accent,
+        warn: $ngx-warn,
+    )
+));
+
+$dark-theme: mat-dark-theme((
+    color: (
+        primary: $ngx-primary,
+        accent: $ngx-accent,
+        warn: $ngx-warn,
+    )
+));
+
+$primary: map-get($light-theme, primary);
+$accent: map-get($light-theme, accent);
+$warn: map-get($light-theme, warn);
+
+
+@include mat-core($general-typography);
+@include angular-material-theme($light-theme);
+
+:root {
+    --main-background:  #f8f9fb;
+    --main-forground: #fff;
+    --main-text-color: #27303f;
+    --main-text-color-1: #64748b;
+    --main-text-color-2: #919db1;
+    --main-text-color-3: #97a6ba;
+    --main-text-color-4: #e2e8f0;
+    --main-border-color: #e2e8f0;
+    --main-hover-background: #f4f5f7;
+
+    --table-header-background: #fbfdfe;
+    --table-header-color: #64748b;
+    --table-row-hover-color: #f0f5ff;
+    --table-cell-color: #27303f;
+    --table-box-shadow: 0 0px 3px #e2e4e8;
+
+    --main-box-shadow: 0 1px 3px #e2e4e8;
+    --main-box-shadow-color: #e2e4e8;
+    --nav-background: #fff;
+    --nav-active-background: #e2e8f0;
+    --nav-hover-background: #f4f5f7;
+    --nav-header-color: #2c3e50;
+    --nav-collapse-item-active: #1a202e;
+    --mat-icon-color: #64748b;
+    --main-dialog-header-color: #f1f5f9;
+    --shadow-1: rgba(0, 0, 0, 0.1);
+    --shadow-2: rgba(0, 0, 0, 0.2);
+    --shadow-inset: rgba(255, 255, 255, 0.5);
+
+    --search-bar-border-color: #d5dce6;
+    --searchbar-bg: #edf2f7;
+    --searchbar-small-bg: #ffffff;
+    --search-focus: #ffffff;
+
+    --light-button: #eee;
+}
+.dark-theme {
+    @include angular-material-color($dark-theme);
+
+    --main-background:  #1a202e;
+    --main-forground: #27303f;
+    --main-text-color: #eff4fb; //#ffffff;
+    --main-text-color-1: #cfd8e3;
+    --main-text-color-2: #97a6ba;
+    --main-text-color-3: #97a6ba;
+    --main-border-color: #3e4450; //#343a46;
+    --main-hover-background: #363b47;
+
+    --table-header-background: #232b3b;
+    --table-header-color: #97a6ba;
+    --table-cell-color: #eff4fb; //#ffffff;
+    --table-row-hover-color: #2b3548;
+    --table-box-shadow: 0 1px 3px rgba(0,0,0,.1), 0 -1px 2px rgba(0,0,0,.1);
+
+    --main-box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px rgba(0,0,0,.06);
+    --main-box-shadow-color: rgba(0,0,0,.1);
+    --nav-background: #1a202e;
+    --nav-active-background: #363f4e; //#121620;
+    --nav-hover-background: #363b47;
+    --nav-collapse-item-active: #fbfdfe;
+    --nav-header-color: #cfd8e3;
+    --mat-icon-color: #97a6ba;
+    --main-dialog-header-color: #1a202e;
+    --shadow-1: rgba(0, 0, 0, 0.1);
+    --shadow-2: rgba(0, 0, 0, 0.2);
+    --shadow-inset: rgba(255, 255, 255, 0.5);
+
+    --search-bar-border-color: #505869;
+    --searchbar-bg: #27303f;
+    --searchbar-small-bg: #27303f;
+    --search-focus: #0c1525;
+
+    --light-button: #566880;
+}
+
+$border: solid 1px var(--main-border-color);
+
+.text-color {
+    color: var(--main-text-color);
+}
+.text-color-1 {
+    color: var(--main-text-color-1);
+}
+.text-color-2 {
+    color: var(--main-text-color-2);
+}
+.text-color-3 {
+    color: var(--main-text-color-3);
+}
+.foreground {
+    background-color: var(--main-forground);
+}
+.background {
+    background-color: var(--main-background);
+}
+.bg-primary {
+    background-color: mat-color($primary);
+}
+.bg-accent {
+    background-color: mat-color($accent);
+}
+.primary-50 {
+    background-color: mat-color($primary, 50);
+}
+.primary-100 {
+    background-color: mat-color($primary, 100);
+}
+.bg-primary-200 {
+    background-color: mat-color($primary, 200);
+}
+.primary-A100 {
+    background-color: mat-color($primary, A100);
+}
+.border {
+    border: $border;
+}
+.border-right {
+    border-right: $border;
+}
+.border-left {
+    border-left: $border;
+}
+.border-top {
+    border-top: $border;
+}
+.border-bottom {
+    border-bottom: $border;
+}
+.mat-expansion-panel-header {
+    border-top: $border;
+}
+.color-primary {
+    color: mat-color($primary);
+}
+.color-accent {
+    color: mat-color($accent);
+}
+.color-warn {
+    color: mat-color($warn);
+}
+.active-background {
+    background-color: var(--nav-active-background);
+}
+.box-shadow {
+    box-shadow: var(--main-box-shadow);
+}
+
+/************
+* OVERRIDES
+************/
+.mat-slide-panel-container,
+.mat-dialog-container,
+.mat-menu-panel{
+    padding: 0!important;
+    background-color: var(--main-forground)!important;
+}
+.mat-flat-button, .mat-warn, .mat-primary, .mat-accent {
+    border-radius: 6px!important;
+    i {
+        color: #ffffff;
+        font-size: 20px;
+        margin-right: .5em;
+    }
+    &:hover {
+        opacity: 0.89;
+    }
+}
+.mat-icon {
+    color: var(--mat-icon-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+        font-size: 18px;
+        color: var(--mat-icon-color);
+    }
+}
+.mat-icon-button {
+    i {
+        font-size: 24px;
+    }
+}
+.mat-menu-panel {
+    box-shadow: var(--main-box-shadow)!important;
+    border: 1px solid var(--main-border-color);
+    min-width: 180px!important;
+    .mat-icon {
+        height: auto!important;
+    }
+    .mat-menu-item {
+        color: var(--main-text-color)!important;
+    }
+}
+
+.mat-dialog-container {
+    padding: 0!important;
+    border-radius: .5em!important;
+}
+.mat-table {
+    mat-row, mat-header-row, mat-footer-row, th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+        border-bottom-color: var(--main-border-color);
+    }
+    tr.mat-header-row {
+        height: 40px;
+    }
+    .mat-header-cell {
+        background-color: var(--table-header-background);
+        color: var(--table-header-color) //#64748b;
+    }
+    .mat-cell {
+        background: var(--main-forground);
+        color: var(--table-cell-color)
+    }
+    tr.mat-row {
+        &:hover {
+            .mat-cell {
+                background: var(--table-row-hover-color);
+            }
+        }
+    }
+    .mat-column-checkbox {
+        flex: 0 1 64px;
+        padding-left: 18px;
+    }
+    .mat-table .mat-column-buttons {
+        width: 80px;
+    }
+    .mat-column-id {
+        width:50px;
+    }
+    .mat-column-actions {
+        width: 50px;
+    }
+
+}
+/************
+* END OVERRIDES
+************/

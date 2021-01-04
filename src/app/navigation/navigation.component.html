@@ -1,0 +1,115 @@
+<div class="app-wrapper">
+    <div class="sidenav" [ngClass]="{'hide-sidebar': hideSideBar}">
+        <div class="logo">
+            <!--            <mat-icon svgIcon="boxes"></mat-icon>-->
+            <img class="img" src="assets/images/logo.jpg" alt="logo">
+        </div>
+        <div class="nav-links">
+            <ng-template [ngForOf]="menus" let-item ngFor>
+                <div class="nav-item">
+                    <div *ngIf="item.children.length" class="menu-link" matRipple routerLinkActive="active" (click)="openAsidePanel(item)">
+                        <i [class]="'nav-icon fad fa-'+item.icon"></i>
+                        <span>{{item?.name}}</span>
+                    </div>
+
+                    <div *ngIf="!item.children.length" class="menu-link no-outline" matRipple routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="item.link">
+                        <i [class]="'nav-icon fad fa-'+item.icon" ></i>
+                        <span>{{item?.name}}</span>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+
+    <div class="sidenav-content" id="content">
+        <div class="sidenav-content-header">
+            <button
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="toggle()">
+                <mat-icon aria-label="Side nav toggle icon" class="fal fa-bars" style="font-size: 20px"></mat-icon>
+            </button>
+
+            <div class="d-flex flex a-center">
+                <ng-container appPortalTarget="header"></ng-container>
+            </div>
+
+            <div class="avator" [dropdown]="profile">
+                <img src="/assets/images/logo.jpg" alt="avator">
+            </div>
+
+            <app-dropdown #profile borderRadius="medium">
+                <div class="profile row j-start a-center">
+                    <img class="image" src="/assets/images/logo.jpg" alt="avator">
+                    <div class="profile-data px-24 text-center">
+                        <p>Mamdhooh Mohamed</p>
+                        <small>USER NAME HRE</small>
+                    </div>
+
+                    <!--                    <div class="row j-between w-100 py-1 px-24" style="padding-bottom: 8px">-->
+                    <!--                        <button mat-stroked-button (click)="changePassword()">Change password</button>-->
+                    <!--                        <button mat-stroked-button (click)="logout()">logout</button>-->
+                    <!--                    </div>-->
+                </div>
+                <div class="column actions">
+                    <div class="row item border-bottom" matRipple dropdownItem (click)="changePassword()">
+                        <mat-icon class="fad fa-unlock-alt"></mat-icon>
+                        <p>Change Password</p>
+                    </div>
+                    <div class="row item border-bottom" matRipple (click)="changeTheme()">
+                        <mat-icon class="fad fa-moon"></mat-icon>
+                        <p class="flex mr-1">Change Theme</p>
+                        <i class="fad fa-toggle-{{darkTheme ? 'on' : 'off'}}" style="font-size: 24px"></i>
+                    </div>
+                    <div class="row item" matRipple>
+                        <mat-icon class="fad fa-sign-out-alt"></mat-icon>
+                        <p>Log Out</p>
+                    </div>
+                </div>
+            </app-dropdown>
+
+        </div>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+
+
+<div
+    class="navigation-aside"
+    *ngIf="openAside"
+    @fadeInLeft
+    @fadeOutLeft
+>
+    <div class="aside-nav-items">
+        <ng-template ngFor let-menu [ngForOf]="selectedMenu?.children">
+
+            <ng-container *ngIf="menu.children.length; else otherMenu">
+                <app-collapse-item [url]="url" [key]="menu.name" [icon]="menu.icon" [title]="menu.name">
+                    <a class="aside-item"
+                       appCollapseItem matRipple
+                       *ngFor="let item of menu.children"
+                       [ngClass]="{'active': item.link == url}"
+                       [routerLink]="item.link">
+                        <span class="name small" style="padding-left: 40px">{{item.name}}</span>
+                    </a>
+
+                </app-collapse-item>
+            </ng-container>
+
+            <ng-template #otherMenu>
+                <a class="aside-item"
+                   matRipple
+                   [ngClass]="{'active': menu.link == url}"
+                   [routerLink]="menu.link">
+                    <i [class]="'icon fal fa-'+menu.icon"></i>
+                    <span class="name">{{menu.name}}</span>
+                </a>
+            </ng-template>
+
+        </ng-template>
+    </div>
+</div>

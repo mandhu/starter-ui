@@ -1,0 +1,22 @@
+<div class="modal">
+    <div class="header">
+        <h2 class="title text-color">{{ dialogData.title || 'Delete Confirmation' }}</h2>
+    </div>
+    <div class="content">
+        <i class="fal fa-info-circle"></i>
+        <p class="desc text-color">{{ dialogData.message }}</p>
+    </div>
+    <div class="action">
+
+        <button class="mr-1 light-button" type="button" mat-dialog-close mat-flat-button>
+<!--            <i class="fal fa-times"></i>-->
+            No
+        </button>
+
+        <button (click)="submit()" mat-flat-button color="warn">
+<!--            <i class="fal fa-check"></i>-->
+            YES
+        </button>
+
+    </div>
+</div>

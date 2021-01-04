@@ -1,0 +1,6 @@
+<div class="aside-item" (click)="toggle()" [class.expanded]="expanded">
+    <i [class]="'fal fa-'+icon+ ' icon'"></i>
+    <span class="name flex">{{title}}</span>
+    <i class="expand-icon fal fa-angle-right"></i>
+</div>
+<ng-content></ng-content>

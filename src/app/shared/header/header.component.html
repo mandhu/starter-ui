@@ -1,0 +1,10 @@
+<ng-template appPortalAttach="header">
+    <button *ngIf="back || backUrl" mat-icon-button style="margin-right: 6px" (click)="goBack()">
+        <mat-icon><i class="fal fa-arrow-left"></i></mat-icon>
+    </button>
+    <ng-content select=".breadcrumbs"></ng-content>
+    <h1 *ngIf="title" class="title">{{title}}</h1>
+    <span [class.flex]="!search"></span>
+    <app-master-search *ngIf="search" style="position: relative"></app-master-search>
+    <ng-content></ng-content>
+</ng-template>

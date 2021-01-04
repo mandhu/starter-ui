@@ -1,0 +1,12 @@
+<div class="modal">
+    <div class="header">
+        <h2 class="title">{{ dialogData.title }}</h2>
+    </div>
+    <div class="content">
+        <p class="desc">{{ dialogData.message }}</p>
+    </div>
+    <div class="action row j-end a-center">
+        <button class="mr-1" mat-flat-button color="warn" (click)="action(false)">No</button>
+        <button mat-flat-button color="primary" (click)="action(true)">Yes</button>
+    </div>
+</div>

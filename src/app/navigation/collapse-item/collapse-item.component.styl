@@ -1,0 +1,28 @@
+:host() {
+    overflow hidden
+    transition height .3s cubic-bezier(.25,.8,.25,1)
+}
+
+.expand-icon {
+    display flex
+    justify-content center
+    align-items center
+    font-size 20px
+    width 20px
+    height 20px
+    transition: transform .3s cubic-bezier(.25,.8,.25,1),color 375ms cubic-bezier(.25,.8,.25,1);
+}
+
+.expanded {
+    .name {
+        color: var(--nav-collapse-item-active);
+    }
+    .icon {
+        color: var(--main-text-color-1);
+    }
+    .expand-icon {
+        transform: rotate(90deg);
+    }
+}
+
+

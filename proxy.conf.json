@@ -1,0 +1,9 @@
+{
+    "/api/*": {
+      "target": "http://ims_api.test/",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+}
+

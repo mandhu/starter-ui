@@ -1,0 +1,21 @@
+<div class="wrapper dk-searchbar flex"
+     [ngClass]="{'search-focus' : isFocus}"
+>
+    <i class="fal fa-search search-icon" [ngClass]="{'search-focus-icon' : isFocus || searchValue}"></i>
+    <input
+        #searchInput
+        type="text"
+        [placeholder]="placeholder"
+        [formControl]="searchCtrl"
+        autocomplete="off"
+        (focus)="isFocus = true"
+        (focusout)="isFocus = false"
+        (keydown.enter)="submit()"
+    />
+    <button class="close-icon" type="button" mat-icon-button [ngClass]="{'show-close-icon' : searchValue}">
+        <mat-icon (click)="clear()">
+            <i class="fal fa-times"></i>
+        </mat-icon>
+    </button>
+</div>
+

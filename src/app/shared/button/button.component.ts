@@ -10,7 +10,8 @@ export class ButtonComponent implements OnInit {
   @Input() text = 'Sample Button';
   @Input() size = 'normal';
   @Input() type = 'primary';
-  @Input() icon = 'fa-plus';
+  @Input() icon = '';
+  @Input() rounded = false;
 
 
 

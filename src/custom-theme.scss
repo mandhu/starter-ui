@@ -107,10 +107,19 @@ $warn: map-get($light-theme, warn);
 
     --button-default: #2e86de;
 
+
+
     --button-primary: #2e86de;
     --button-primary-hover: #54a0ff;
     --button-danger: #ee5253;
     --button-danger-hover: #ff6b6b;
+    
+    --button-plain-text: black;
+    --button-plain: none;
+    --button-plain-hover:#f3f3f3;
+
+    
+
 
 }
 .dark-theme {
@@ -153,10 +162,16 @@ $warn: map-get($light-theme, warn);
 
     --button-default: #2e86de;
 
+   
+
     --button-primary: #2e86de;
     --button-primary-hover: #54a0ff;
     --button-danger: #ee5253;
     --button-danger-hover: #ff6b6b;
+
+    --button-plain-text: white;
+    --button-plain: none;
+    --button-plain-hover:#364056;
 
 }
 
@@ -330,10 +345,10 @@ $border: solid 1px var(--main-border-color);
     cursor: pointer;
     font-weight: 500;
     transition: all ease-in-out .3s;
-    color: white;
+    color: var(--button-text-light);
 
     i {
-        color: white;
+        color: var(--button-text-light);
         margin-right: .2em;
     }
 
@@ -353,12 +368,25 @@ $border: solid 1px var(--main-border-color);
         }
     }
 
+    &.plain {
+        background-color: var(--button-plain);
+        color: var(--button-plain-text);
+
+        &:hover {
+            background-color: var(--button-plain-hover);
+        }
+    }
+
     &.large {
-        font-size: 1em;
+        font-size: .9em;
     }
 
     &.small {
         font-size: .7em;
+    }
+
+    &.rounded {
+        border-radius: 5em;
     }
 
 }

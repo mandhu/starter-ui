@@ -1,3 +1,4 @@
+import { ButtonComponent } from './button/button.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +19,7 @@ import { DeleteButtonComponent } from './delete/delete-button/delete-button.comp
 
 
 
+
 @NgModule({
     declarations: [
         HeaderComponent,
@@ -26,6 +28,7 @@ import { DeleteButtonComponent } from './delete/delete-button/delete-button.comp
         ConfirmComponent,
         DeleteDialogComponent,
         DeleteButtonComponent,
+        ButtonComponent
     ],
     imports: [
         CommonModule,
@@ -54,7 +57,8 @@ import { DeleteButtonComponent } from './delete/delete-button/delete-button.comp
         ConfirmComponent,
         MatDialogModule,
         DeleteDialogComponent,
-        DeleteButtonComponent
+        DeleteButtonComponent,
+        ButtonComponent
     ]
 })
 export class SharedModule { }

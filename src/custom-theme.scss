@@ -104,6 +104,14 @@ $warn: map-get($light-theme, warn);
     --search-focus: #ffffff;
 
     --light-button: #eee;
+
+    --button-default: #2e86de;
+
+    --button-primary: #2e86de;
+    --button-primary-hover: #54a0ff;
+    --button-danger: #ee5253;
+    --button-danger-hover: #ff6b6b;
+
 }
 .dark-theme {
     @include angular-material-color($dark-theme);
@@ -142,6 +150,14 @@ $warn: map-get($light-theme, warn);
     --search-focus: #0c1525;
 
     --light-button: #566880;
+
+    --button-default: #2e86de;
+
+    --button-primary: #2e86de;
+    --button-primary-hover: #54a0ff;
+    --button-danger: #ee5253;
+    --button-danger-hover: #ff6b6b;
+
 }
 
 $border: solid 1px var(--main-border-color);
@@ -301,6 +317,48 @@ $border: solid 1px var(--main-border-color);
     }
     .mat-column-actions {
         width: 50px;
+    }
+
+}
+
+.btn {
+
+    padding: .75em 1.5em;
+    border: 0;
+    margin: 1em;
+    border-radius: .3em;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all ease-in-out .3s;
+    color: white;
+
+    i {
+        color: white;
+        margin-right: .2em;
+    }
+
+    &.primary {
+        background-color: var(--button-primary);
+
+        &:hover {
+            background-color: var(--button-primary-hover);
+        }
+    }
+
+    &.danger {
+        background-color: var(--button-danger);
+
+        &:hover {
+            background-color: var(--button-danger-hover);
+        }
+    }
+
+    &.large {
+        font-size: 1em;
+    }
+
+    &.small {
+        font-size: .7em;
     }
 
 }

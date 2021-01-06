@@ -177,6 +177,10 @@ $warn: map-get($light-theme, warn);
 
 $border: solid 1px var(--main-border-color);
 
+.container {
+    padding: 2em;
+}
+
 .text-color {
     color: var(--main-text-color);
 }
@@ -345,7 +349,14 @@ $border: solid 1px var(--main-border-color);
     cursor: pointer;
     font-weight: 500;
     transition: all ease-in-out .3s;
-    color: var(--button-text-light);
+    color: var(--button-text-dark);
+
+    &:focus {
+        border: none;
+        outline:0;
+    }
+
+    
 
     i {
         color: var(--button-text-light);

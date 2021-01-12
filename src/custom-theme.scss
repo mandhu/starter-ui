@@ -113,6 +113,22 @@ $warn: map-get($light-theme, warn);
     --item-active: #e2e8f0;
     --color-warn: #{mat-color($warn)};
     --color-accent: #{mat-color($accent)};
+    --button-default: #2e86de;
+
+
+
+    --button-primary: #2e86de;
+    --button-primary-hover: #54a0ff;
+    --button-danger: #ee5253;
+    --button-danger-hover: #ff6b6b;
+
+    --button-plain-text: black;
+    --button-plain: none;
+    --button-plain-hover:#f3f3f3;
+
+
+
+
 }
 .dark-theme {
     @include angular-material-color($dark-theme);
@@ -157,10 +173,27 @@ $warn: map-get($light-theme, warn);
     --approval-color: #AB47BC;
     --news-color: #e91e63;
 
-    --item-active: #363f4e
+    --item-active: #363f4e;
+    --button-default: #2e86de;
+
+
+
+    --button-primary: #2e86de;
+    --button-primary-hover: #54a0ff;
+    --button-danger: #ee5253;
+    --button-danger-hover: #ff6b6b;
+
+    --button-plain-text: white;
+    --button-plain: none;
+    --button-plain-hover:#364056;
+
 }
 
 $border: solid 1px var(--main-border-color);
+
+.container {
+    padding: 2em;
+}
 
 .text-color {
     color: var(--main-text-color);
@@ -317,6 +350,68 @@ $border: solid 1px var(--main-border-color);
     }
     .mat-column-actions {
         width: 50px;
+    }
+
+}
+
+.btn {
+
+    padding: .75em 1.5em;
+    border: 0;
+    margin: 1em;
+    border-radius: .3em;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all ease-in-out .3s;
+    color: var(--button-text-dark);
+
+    &:focus {
+        border: none;
+        outline:0;
+    }
+
+
+
+    i {
+        color: var(--button-text-light);
+        margin-right: .2em;
+    }
+
+    &.primary {
+        background-color: var(--button-primary);
+
+        &:hover {
+            background-color: var(--button-primary-hover);
+        }
+    }
+
+    &.danger {
+        background-color: var(--button-danger);
+
+        &:hover {
+            background-color: var(--button-danger-hover);
+        }
+    }
+
+    &.plain {
+        background-color: var(--button-plain);
+        color: var(--button-plain-text);
+
+        &:hover {
+            background-color: var(--button-plain-hover);
+        }
+    }
+
+    &.large {
+        font-size: .9em;
+    }
+
+    &.small {
+        font-size: .7em;
+    }
+
+    &.rounded {
+        border-radius: 5em;
     }
 
 }

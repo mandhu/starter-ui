@@ -10,7 +10,8 @@ import {ConfirmComponent} from './confirm/confirm.component';
 import {DeleteDialogComponent} from './delete/delete-dialog/delete-dialog.component';
 import {DeleteButtonComponent} from './delete/delete-button/delete-button.component';
 import {FilterPipe} from '../pipes/filter.pipe';
-import {MatIcon, MatIconModule} from '@angular/material/icon';
+import {MatIconModule} from '@angular/material/icon';
+import {ButtonComponent} from './button/button.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
         ConfirmComponent,
         DeleteDialogComponent,
         DeleteButtonComponent,
-        FilterPipe
+        FilterPipe,
+        ButtonComponent
     ],
     imports: [
         CommonModule,
@@ -40,7 +42,8 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
         ConfirmComponent,
         DeleteDialogComponent,
         DeleteButtonComponent,
-        FilterPipe
+        FilterPipe,
+        ButtonComponent
     ]
 })
 export class SharedModule { }

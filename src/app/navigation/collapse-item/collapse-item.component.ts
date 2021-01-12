@@ -9,7 +9,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
     styleUrls: ['./collapse-item.component.styl']
 })
 export class CollapseItemComponent implements AfterContentInit {
-    @HostBinding('style.height') public height: SafeStyle = '48px';
+    @HostBinding('style.height') public height: SafeStyle = '45px';
     @ContentChildren(CollapseItemDirective) item: QueryList<CollapseItemDirective>;
     @Input() icon = 'menu';
     @Input() title = 'Menu';

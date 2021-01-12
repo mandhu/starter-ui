@@ -2,6 +2,7 @@ import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
 import {UserService} from '../modules/acl/roles/user.service';
 
 @Directive({
+    // tslint:disable-next-line:directive-selector
     selector: '[permission]'
 })
 export class PermissionDirective {
@@ -16,7 +17,7 @@ export class PermissionDirective {
         this.getPermissions(permission);
     }
 
-    getPermissions(permission) {
+    getPermissions(permission: string): void {
         this.userService.userPermissions.subscribe(allPermissions => {
             if (allPermissions.some(perm => perm.name === permission)) {
                 if (!this.vcRef.length) {

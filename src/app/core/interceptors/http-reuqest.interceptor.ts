@@ -1,23 +1,15 @@
 import {Injectable} from '@angular/core';
-import {
-    HttpErrorResponse,
-    HttpEvent,
-    HttpHandler,
-    HttpInterceptor,
-    HttpParams,
-    HttpRequest,
-    HttpResponse,
-} from '@angular/common/http';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
+import {EMPTY, Observable, throwError} from 'rxjs';
 import {Router} from '@angular/router';
-import {catchError, tap} from 'rxjs/operators';
-import {EMPTY, Observable} from 'rxjs';
-import {AuthService} from './auth.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {catchError, tap} from 'rxjs/operators';
+import {AppService} from '../services/app.service';
 
 @Injectable()
-export class NxHttpService implements HttpInterceptor {
+export class HttpRequestInterceptor implements HttpInterceptor {
 
-    constructor(private auth: AuthService,
+    constructor(private appService: AppService,
                 private router: Router,
                 private snackBar: MatSnackBar) {
     }
@@ -25,15 +17,18 @@ export class NxHttpService implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         request = request.clone({
             setHeaders: {
-                Authorization: `${this.auth.getToken()}`
+                Accept: 'application/json',
+                Authorization: `${localStorage.getItem('token')}`
             }
         });
+
+        this.appService.setLoading(true);
 
         return next.handle(request)
             .pipe(
                 tap(event => {
                     if (event instanceof HttpResponse) {
-                        // this.store.dispatch(new HideLoader());
+                        this.appService.setLoading(false);
                     }
                 }),
                 catchError((err, caught) => {
@@ -42,13 +37,13 @@ export class NxHttpService implements HttpInterceptor {
                             this.router.navigate(['/login']);
                             return EMPTY;
                         }
-                        // this.store.dispatch(new HideLoader());
+                        this.appService.setLoading(false);
 
                         this.snackBar.open(this.getErrorMessage(err), 'OK', {
                             duration: 3000
                         });
 
-                        return EMPTY;
+                        return throwError(this.getErrorMessage(err));
                     }
                 })
             ) as any;
@@ -65,16 +60,4 @@ export class NxHttpService implements HttpInterceptor {
             return null;
         }
     }
-
 }
-
-export function MakeParams(data): HttpParams {
-    let httpParams = new HttpParams();
-    if (data) {
-        Object.keys(data).forEach((key) => {
-            httpParams = httpParams.append(key, data[key]);
-        });
-        return httpParams;
-    }
-}
-

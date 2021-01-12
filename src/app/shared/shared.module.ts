@@ -12,6 +12,7 @@ import {DeleteButtonComponent} from './delete/delete-button/delete-button.compon
 import {FilterPipe} from '../pipes/filter.pipe';
 import {MatIconModule} from '@angular/material/icon';
 import {ButtonComponent} from './button/button.component';
+import {PermissionDirective} from '../directive/permission.directive';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {ButtonComponent} from './button/button.component';
         DeleteDialogComponent,
         DeleteButtonComponent,
         FilterPipe,
-        ButtonComponent
+        ButtonComponent,
+        PermissionDirective
     ],
     imports: [
         CommonModule,
@@ -43,7 +45,8 @@ import {ButtonComponent} from './button/button.component';
         DeleteDialogComponent,
         DeleteButtonComponent,
         FilterPipe,
-        ButtonComponent
+        ButtonComponent,
+        PermissionDirective
     ]
 })
 export class SharedModule { }

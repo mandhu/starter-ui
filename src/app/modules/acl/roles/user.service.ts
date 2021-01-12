@@ -1,22 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {NxDataService, NxResponse} from '../../../decorators/NxDataService';
-import {MakeParams} from '../../../services/nx-http.service';
+import {NxDataService} from '../../../decorators/NxDataService';
 import {BehaviorSubject, Observable} from 'rxjs';
 
-export interface UserI {
-    _id: string;
-    name: string;
-    username: string;
-    office?: string;
-}
 
-export interface UserService extends NxDataService<UserI> {
+export interface UserService extends NxDataService<any> {
     test;
-
-    setToken(s: string): void;
-
-    // setToken(s: string): void;
 }
 
 @Injectable({
@@ -30,45 +19,21 @@ export interface UserService extends NxDataService<UserI> {
 export class UserService {
     userPermissions = new BehaviorSubject([]);
     userprofile = new BehaviorSubject(null);
-    userRole = new BehaviorSubject(null);
 
     constructor(private http: HttpClient) {
     }
 
-    clear() {
+    clear(): void {
         this.userPermissions.next([]);
         this.userprofile.next(null);
-        this.userRole.next(null);
     }
 
-    login(data) {
-        return this.http.post<NxResponse>('/api/users/authenticate', data);
+    login(data): Observable<any> {
+        return this.http.post<any>('/api/users/authenticate', data);
     }
 
-    register(data) {
+    register(data): Observable<any> {
         return this.http.post('/api/register', data);
-    }
-
-    setToken(token) {
-        localStorage.setItem('token', token);
-    }
-
-    employeeList(params?) {
-        return this.http.get<NxResponse>(`api/users/employee_list`, {
-            params: MakeParams(params)
-        });
-    }
-
-    profile() {
-        return this.http.get<NxResponse>(`api/users/user_info`);
-    }
-
-    menus() {
-        return this.http.get<NxResponse>(`api/users/menus`);
-    }
-
-    checkUserRole(): Observable<any> {
-        return this.http.get<NxResponse>('/api/users/get_user_role', {});
     }
 
     getUserRoles(userId: number): Observable<any> {

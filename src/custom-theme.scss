@@ -191,10 +191,9 @@ $warn: map-get($light-theme, warn);
 
 $border: solid 1px var(--main-border-color);
 
-.container {
-    padding: 2em;
-}
-
+//.container {
+//    padding: 2em;
+//}
 .text-color {
     color: var(--main-text-color);
 }

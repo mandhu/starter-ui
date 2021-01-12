@@ -1,0 +1,42 @@
+.toggle-icon
+    font-size 1.2em
+.action-list-item
+    padding: 14px;
+    flex 1
+    margin 2px .5em
+    border-radius .5em
+    &.active
+        background-color var(--item-active)
+    &:hover {
+        background-color var(--item-active)
+    }
+.list-icon
+    font-size 1.3em
+.list-hover {
+    &:hover {
+        background-color var(--item-active)
+    }
+}
+.toggle-check-icon
+    &.active
+        color var(--color-accent)!important
+
+
+.example-tree-invisible {
+    display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+.role-name {
+    font-size 14px
+}
+.user-count
+    outline none
+    &:hover
+        cursor pointer
+        text-decoration underline

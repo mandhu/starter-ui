@@ -1,0 +1,76 @@
+<div class="row" style="height: calc(100vh - 64px)">
+    <div class="flex border-right foreground">
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+                <div class="action-list-item hover row j-between a-center" [ngClass]="{'active': selectedAction == node}" matRipple (click)="selectAction(node)">
+                    <span>{{node.name}}</span>
+                    <i *ngIf="selectedAction == node" class="fal fa-chevron-right"></i>
+                </div>
+            </mat-tree-node>
+
+            <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+                <button mat-icon-button matTreeNodeToggle
+                        [attr.aria-label]="'Toggle ' + node.name">
+                    <i class="toggle-icon fal {{treeControl.isExpanded(node) ? 'fa-minus' : 'fa-plus'}}"></i>
+                </button>
+                <span class="text-color">{{node.name}}</span>
+            </mat-tree-node>
+        </mat-tree>
+    </div>
+
+    <div class="flex">
+        <div *ngIf="selectedAction">
+            <h4 style="margin-left: 1em; margin-top: 1em; line-height: 30px" class="text-color">Mapped Permission(s)</h4>
+            <mat-list class="m-1 p-0 box-shadow br-small foreground overflow-hidden">
+                <mat-list-item class="list-hover" *ngFor="let item of mappedPermissions;">
+                    <div class="flex row j-between a-center text-color">
+                        {{item.permission.display_name}}
+                        <app-delete-button
+                            (deleted)="selectAction(selectedAction)"
+                            matTooltip="Delete mapped permission"
+                            [iconOnly]="true"
+                            [id]="item.id"
+                            api="api/actions/permission">
+
+                        </app-delete-button>
+<!--                        <button mat-icon-button>-->
+<!--                            <mat-icon>-->
+<!--                                <i class="fal fa-trash list-icon"></i>-->
+<!--                            </mat-icon>-->
+<!--                        </button>-->
+                    </div>
+                </mat-list-item>
+                <mat-list-item *ngIf="!mappedPermissions.length">
+                    <div class="text-color" style="font-size: 14px">
+                        <span>No mapped permission found</span>
+                    </div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+
+    <div class="flex">
+        <div *ngIf="selectedAction">
+<!--        <div>-->
+            <div class="row a-center j-between" style="padding: 1em">
+                <h4 class="text-color">All Permissions</h4>
+                <input placeholder="Filter permission" class="small-searchbar" [(ngModel)]="filterPermissions" type="text">
+            </div>
+            <mat-list class="p-0 box-shadow br-small foreground overflow-hidden" style="margin: 0 1em">
+            <cdk-virtual-scroll-viewport itemSize="48" style="height: calc(100vh - 2rem - 30px - 64px)">
+                <mat-list-item class="list-hover" *cdkVirtualFor="let item of allPermissions | filter: filterPermissions">
+                    <div class="flex row j-between a-center text-color">
+                        <span class="text-color">{{item.name}}</span>
+                        <button mat-icon-button (click)="mapPermission(item)">
+                            <mat-icon>
+                                <i class="{{ item?.selected ? 'fad fa-check-square' : 'fal fa-square'}} list-icon"></i>
+                            </mat-icon>
+                        </button>
+                    </div>
+                </mat-list-item>
+            </cdk-virtual-scroll-viewport>
+            </mat-list>
+        </div>
+    </div>
+</div>
+

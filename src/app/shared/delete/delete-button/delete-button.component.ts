@@ -10,6 +10,7 @@ import {DeleteDialogComponent} from '../delete-dialog/delete-dialog.component';
 export class DeleteButtonComponent implements OnInit {
 
     @Input() icon = true;
+    @Input() iconOnly = false;
     @Input() id: number;
     @Input() api: string;
     @Input() title: string;

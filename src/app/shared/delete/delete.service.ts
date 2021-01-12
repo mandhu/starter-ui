@@ -10,6 +10,6 @@ export class DeleteService {
     constructor(private http: HttpClient) { }
 
     delete(url, id): Observable<any> {
-        return this.http.delete(url, id);
+        return this.http.delete(`${url}/${id}`);
     }
 }

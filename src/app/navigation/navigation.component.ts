@@ -2,13 +2,15 @@ import { ChangeDetectorRef, Component, ElementRef, HostBinding, OnInit, Renderer
 import { fadeInLeft, fadeOutLeft } from '../animations/fade';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { OverlayContainer, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
-import { DropdownDirective } from '../utils/dropdown/dropdown.directive';
+import { DropdownDirective } from '../components/dropdown/dropdown.directive';
 
 interface Menu {
     icon: string;
     link?: string;
     name: string;
     children?: Menu[];
+    permissions?: string;
+    parent?: boolean;
 }
 
 @Component({
@@ -37,98 +39,59 @@ export class NavigationComponent implements OnInit {
             children: []
         },
         {
-            icon: 'cubes',
-            link: '/',
-            name: 'Stock',
-            children: [
-                {
-                    icon: 'dolly-flatbed-alt',
-                    link: '/',
-                    name: 'Inventory',
-                    children: []
-                },
-                {
-                    icon: 'boxes',
-                    link: '/',
-                    name: 'Products',
-                    children: []
-                },
-                {
-                    icon: 'layer-group',
-                    link: '/',
-                    name: 'Categories',
-                    children: []
-                },
-                {
-                    icon: 'list-alt',
-                    link: '/',
-                    name: 'Brands',
-                    children: []
-                },
-            ]
-        },
-        {
-            icon: 'users-medical',
-            link: '/',
-            name: 'Clients',
-            children: [
-                {
-                    icon: 'person-carry',
-                    link: '/',
-                    name: 'Suppliers',
-                    children: []
-                },
-                {
-                    icon: 'users',
-                    link: '/',
-                    name: 'Customers',
-                    children: []
-                },
-            ]
-        },
-        {
             icon: 'shield-check',
             link: '/',
             name: 'ACL',
+            parent: true,
+            permissions: null,
             children: [
                 {
                     icon: 'users-cog',
                     link: '/',
                     name: 'Manage',
+                    parent: true,
                     children: [
                         {
                             icon: 'user-lock',
-                            link: '/',
-                            name: 'Role Map',
-                            children: []
+                            link: '/acl/permission-map',
+                            name: 'Permission Map',
+                            children: [],
+                            permissions: 'permission_map'
                         },
                         {
                             icon: 'user-lock',
-                            link: '/',
-                            name: 'Menu Map',
-                            children: []
+                            link: '/acl/role-map',
+                            name: 'Role Map',
+                            children: [],
+                            permissions: 'role_map'
                         },
-                    ]
+                        {
+                            icon: 'user-lock',
+                            link: '/acl/role-management',
+                            name: 'Role Management',
+                            children: [],
+                            permissions: 'role_management'
+                        },
+                    ],
+                    permissions: null
                 },
                 {
                     icon: 'user-lock',
                     link: '/acl/users',
                     name: 'Users',
-                    children: []
+                    children: [],
+                    permissions: 'users',
+                    parent: false,
                 },
                 {
                     icon: 'lock-alt',
                     link: '/acl/roles',
                     name: 'Roles',
-                    children: []
+                    children: [],
+                    permissions: 'roles',
+                    parent: false,
                 },
-                {
-                    icon: 'fingerprint',
-                    link: '/',
-                    name: 'Permissions',
-                    children: []
-                },
-            ]
+            ],
         },
     ];
     url = null;
@@ -160,7 +123,7 @@ export class NavigationComponent implements OnInit {
 
     openAsidePanel(item: Menu): void {
         if (this.selectedMenu === item && this.openAside) {
-            // this.hideAOverlay();
+            this.handleOverlayClick();
             return;
         }
 

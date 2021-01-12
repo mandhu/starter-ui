@@ -1,0 +1,47 @@
+<div class="w-500">
+    <div class="dialog-header">
+        <h3 class="title">{{ data.id ? "Edit" : "Add"}} User</h3>
+        <button (click)="close()" mat-icon-button>
+            <i class="fal fa-times"></i>
+        </button>
+    </div>
+    <div>
+        <form [formGroup]="form" class="column form-padding">
+            <mat-form-field appearance="outline">
+                <mat-select #singleSelect formControlName="department_id" placeholder="Department">
+                    <mat-option>
+                        <ngx-mat-select-search formControlName="department"
+                                               noEntriesFoundLabel='Not found'
+                                               placeholderLabel="Search Department"></ngx-mat-select-search>
+                    </mat-option>
+
+                    <mat-option *ngFor="let dept of filteredDepartment" [value]="dept.id">
+                        {{ dept.name }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Mobile Number</mat-label>
+                <textarea formControlName="mobile" matInput placeholder="Mobile Number"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>User Type</mat-label>
+                <mat-select  formControlName="type" placeholder="Type">
+                    <mat-option value="other">Other</mat-option>
+                    <mat-option value="core">Core</mat-option>
+                    <mat-option value="software">Software</mat-option>
+                    <mat-option value="support">Support</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+                <button (click)="close()" [color]="'warn'" mat-flat-button>Cancel</button>
+                <button (click)="submit()" [color]="'primary'" [disabled]="form.invalid"
+                        mat-flat-button>{{ data.id ? "Update" : "Add"}}</button>
+            </div>
+
+        </form>
+    </div>
+</div>

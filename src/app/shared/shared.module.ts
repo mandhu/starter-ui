@@ -1,21 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
-import { MasterSearchComponent } from './header/master-search/master-search.component';
-import { PortalModule } from '../utils/portal/portal.module';
-import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSlidePanelModule } from 'ngx-mat-slide-panel';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { MatTableModule } from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
-import { MatMenuModule } from '@angular/material/menu';
-import { ConfirmComponent } from './confirm/confirm.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import { DeleteDialogComponent } from './delete/delete-dialog/delete-dialog.component';
-import { DeleteButtonComponent } from './delete/delete-button/delete-button.component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HeaderComponent} from './header/header.component';
+import {MasterSearchComponent} from './header/master-search/master-search.component';
+import {PortalModule} from '../utils/portal/portal.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {SearchBarComponent} from './search-bar/search-bar.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ConfirmComponent} from './confirm/confirm.component';
+import {DeleteDialogComponent} from './delete/delete-dialog/delete-dialog.component';
+import {DeleteButtonComponent} from './delete/delete-button/delete-button.component';
+import {FilterPipe} from '../pipes/filter.pipe';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -26,35 +21,26 @@ import { DeleteButtonComponent } from './delete/delete-button/delete-button.comp
         ConfirmComponent,
         DeleteDialogComponent,
         DeleteButtonComponent,
+        FilterPipe
     ],
     imports: [
         CommonModule,
         PortalModule,
-        MatIconModule,
         ReactiveFormsModule,
-        MatButtonModule,
-        MatSlidePanelModule,
-        MatTableModule,
         HttpClientModule,
-        MatMenuModule,
-        MatDialogModule
+        MatIconModule,
     ],
     exports: [
         CommonModule,
         HeaderComponent,
         MasterSearchComponent,
-        MatIconModule,
         ReactiveFormsModule,
-        MatButtonModule,
-        MatSlidePanelModule,
         SearchBarComponent,
-        MatTableModule,
         HttpClientModule,
-        MatMenuModule,
         ConfirmComponent,
-        MatDialogModule,
         DeleteDialogComponent,
-        DeleteButtonComponent
+        DeleteButtonComponent,
+        FilterPipe
     ]
 })
 export class SharedModule { }

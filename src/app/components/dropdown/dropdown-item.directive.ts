@@ -2,7 +2,6 @@ import { Directive, EventEmitter, HostBinding, HostListener, Output } from '@ang
 import { Subject } from 'rxjs';
 
 @Directive({
-    // tslint:disable-next-line:directive-selector
     selector: '[dropdownItem]',
     exportAs: 'dropdownItem'
 })

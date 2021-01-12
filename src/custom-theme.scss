@@ -104,6 +104,15 @@ $warn: map-get($light-theme, warn);
     --search-focus: #ffffff;
 
     --light-button: #eee;
+
+    --complted-color: #3e8054;
+    --pending-color: #956b16;
+    --approval-color: #7e57c2;
+    --news-color: #892b2b;
+
+    --item-active: #e2e8f0;
+    --color-warn: #{mat-color($warn)};
+    --color-accent: #{mat-color($accent)};
 }
 .dark-theme {
     @include angular-material-color($dark-theme);
@@ -142,6 +151,13 @@ $warn: map-get($light-theme, warn);
     --search-focus: #0c1525;
 
     --light-button: #566880;
+
+    --complted-color: #4caf50;
+    --pending-color: #ffc107;
+    --approval-color: #AB47BC;
+    --news-color: #e91e63;
+
+    --item-active: #363f4e
 }
 
 $border: solid 1px var(--main-border-color);

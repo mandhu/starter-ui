@@ -1,0 +1,24 @@
+<div class="w-500">
+    <div class="dialog-header">
+        <h3 class="title">{{data?.display_name}} Role Users</h3>
+        <button mat-icon-button (click)="close()">
+            <i class="fal fa-times"></i>
+        </button>
+    </div>
+    <div class="row a-center" style="padding: 1em">
+        <input placeholder="Filter user" class="small-searchbar" [(ngModel)]="filterUser" type="text">
+    </div>
+
+    <div class="row a-center j-center" style="padding: 3em 0" *ngIf="loading">
+        <mat-spinner [diameter]="50" [strokeWidth]="4" color="accent"></mat-spinner>
+    </div>
+    <cdk-virtual-scroll-viewport itemSize="64" style="height: calc(100vh - 2rem - 30px - 64px)">
+        <div class="action-list-item hover row j-between a-center"
+             *cdkVirtualFor="let item of users | filter: filterUser" matRipple>
+            <div class="column">
+                <span class="text-color" style="margin-bottom: 6px">{{item.name}}</span>
+                <small class="text-color-2">{{item?.email}}</small>
+            </div>
+        </div>
+    </cdk-virtual-scroll-viewport>
+</div>

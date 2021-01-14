@@ -13,6 +13,7 @@ import {FilterPipe} from '../pipes/filter.pipe';
 import {MatIconModule} from '@angular/material/icon';
 import {ButtonComponent} from './button/button.component';
 import {PermissionDirective} from '../directive/permission.directive';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import {PermissionDirective} from '../directive/permission.directive';
         DeleteButtonComponent,
         FilterPipe,
         ButtonComponent,
-        PermissionDirective
+        PermissionDirective,
     ],
     imports: [
         CommonModule,
@@ -33,6 +34,7 @@ import {PermissionDirective} from '../directive/permission.directive';
         ReactiveFormsModule,
         HttpClientModule,
         MatIconModule,
+        MatButtonModule,
     ],
     exports: [
         CommonModule,
@@ -46,6 +48,7 @@ import {PermissionDirective} from '../directive/permission.directive';
         DeleteButtonComponent,
         FilterPipe,
         ButtonComponent,
+        MatButtonModule,
         PermissionDirective
     ]
 })

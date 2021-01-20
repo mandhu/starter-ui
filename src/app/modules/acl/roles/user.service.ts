@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {NxDataService} from '../../../decorators/NxDataService';
-import {BehaviorSubject, Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { NxDataService, NxResponse } from '../../../decorators/NxDataService';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 export interface UserService extends NxDataService<any> {
@@ -29,7 +29,11 @@ export class UserService {
     }
 
     login(data): Observable<any> {
-        return this.http.post<any>('/api/users/authenticate', data);
+        return this.http.post<any>('/api/login', data);
+    }
+
+    setToken(token) {
+        localStorage.setItem('token', token);
     }
 
     register(data): Observable<any> {
@@ -38,6 +42,10 @@ export class UserService {
 
     getUserRoles(userId: number): Observable<any> {
         return this.http.get(`/api/users/get_user_roles/${userId}`);
+    }
+
+    getUserSettings() {
+        return this.http.get<NxResponse>(`api/users/settings`);
     }
 
     toggleUserRole(userId: number, roleId: number): Observable<any> {

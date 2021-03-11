@@ -1,0 +1,11 @@
+<button [class]="btnClass" *ngIf="button" (click)="openDialog()">
+    <ng-content></ng-content>
+    Delete
+</button>
+<button mat-menu-item *ngIf="menuItem" (click)="openDialog()" >
+    <mat-icon color="warn"><i class="fal fa-trash-alt"></i></mat-icon>
+    <span>Delete</span>
+</button>
+<button mat-icon-button *ngIf="icon && !menuItem && !button" class="delete-icon-btn" (click)="openDialog()">
+    <i class="fal fa-trash-alt delete-icon"></i>
+</button>

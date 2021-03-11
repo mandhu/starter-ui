@@ -2,9 +2,9 @@ import { BehaviorSubject } from 'rxjs';
 import { Params } from '@angular/router';
 import { NxDataSource } from './NxDataSource';
 import { EventEmitter } from '@angular/core';
-import { DeleteDialogComponent } from '../shared/delete/delete-dialog/delete-dialog.component';
 import {PageEvent} from '@angular/material/paginator';
 import {Sort} from '@angular/material/sort';
+import {DeleteDialogComponent} from '../components/delete-button/delete-dialog/delete-dialog.component';
 
 
 export interface NxBaseFunctions {

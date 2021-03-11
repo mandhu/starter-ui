@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { DeleteService } from '../delete.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-delete-dialog',
@@ -12,26 +13,20 @@ import { DeleteService } from '../delete.service';
 export class DeleteDialogComponent implements OnInit {
 
     form: FormGroup;
-    dialogData = {
-        title: 'Delete',
-        message: 'You won\'t be able to revert this!. Are you sure?'
-    };
-
     constructor(public dialogRef: MatDialogRef<DeleteDialogComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any,
                 private http: HttpClient,
+                private sb: MatSnackBar,
                 private service: DeleteService) {
-
-        this.dialogData = { ...this.dialogData, ...this.data };
-
     }
 
     ngOnInit(): void {
     }
 
     submit(): void {
-        this.service.delete(this.data.api, +this.data.id).subscribe(res => {
+        this.service.delete(this.data.api).subscribe(res => {
             this.dialogRef.close(res);
+            this.sb.open(res.message || 'Deleted', 'OK');
         });
     }
 

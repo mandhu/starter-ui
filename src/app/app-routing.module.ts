@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './shared/login/login.component';
 
 
 const routes: Routes = [
@@ -24,10 +23,10 @@ const routes: Routes = [
             }
         ]
     },
-    {
-        path: 'login',
-        component: LoginComponent
-    },
+    // {
+    //     path: 'login',
+    //     component: LoginComponent
+    // },
 ];
 
 @NgModule({

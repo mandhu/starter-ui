@@ -42,9 +42,9 @@ export class HttpRequestInterceptor implements HttpInterceptor {
                         this.snackBar.open(this.getErrorMessage(err), 'OK', {
                             duration: 3000
                         });
-
-                        return throwError(this.getErrorMessage(err));
+                        return throwError(err);
                     }
+                    return EMPTY;
                 })
             ) as any;
     }

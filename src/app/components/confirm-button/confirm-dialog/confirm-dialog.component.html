@@ -1,0 +1,12 @@
+<div class="modal">
+    <div class="header">
+        <h2 class="title">{{ data.title }}</h2>
+    </div>
+    <div class="content">
+        <p class="desc">{{ data.message }}</p>
+    </div>
+    <div class="action row j-end a-center">
+        <button class="btn mr-1" (click)="action(false)">No</button>
+        <button class="btn primary" (click)="action(true)">Yes</button>
+    </div>
+</div>

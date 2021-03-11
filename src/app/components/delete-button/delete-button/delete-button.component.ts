@@ -9,12 +9,13 @@ import {DeleteDialogComponent} from '../delete-dialog/delete-dialog.component';
 })
 export class DeleteButtonComponent implements OnInit {
 
+    @Input() btnClass = 'btn';
     @Input() icon = true;
-    @Input() iconOnly = false;
-    @Input() id: number;
+    @Input() button = false;
+    @Input() menuItem = false;
     @Input() api: string;
-    @Input() title: string;
-    @Input() description: string;
+    @Input() title = 'Delete';
+    @Input() description = 'You won\'t be able to revert this!. Are you sure?';
     @Output() deleted = new EventEmitter();
 
 
@@ -27,7 +28,7 @@ export class DeleteButtonComponent implements OnInit {
     openDialog(): void {
         const dialogRef = this.dialog.open(DeleteDialogComponent, {
             width: '500px',
-            data: {api: this.api, id: this.id, title: this.title, description: this.description}
+            data: {api: this.api, title: this.title, description: this.description}
         });
 
         dialogRef.afterClosed().subscribe(result => {

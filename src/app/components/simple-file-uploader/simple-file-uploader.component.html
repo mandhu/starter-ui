@@ -1,0 +1,26 @@
+<input type="file" #file style="display: none" (change)="onFilesAdded($event)"
+       accept="application/pdf,image/jpeg,image/png"
+/>
+
+<div class="header">
+  <div class="mat-body-2 text-color">{{title}}
+<!--    <span class="mat-body-2 text-color" *ngIf="count"> [{{selectedFile.length}}]</span>-->
+  </div>
+  <button type="button" (click)="file.click()" class="btn primary" [disabled]="uploading">
+    <span>Select File(s)</span>
+  </button>
+</div>
+<small style="padding-left: 10px; color: #3e8dbb">Maximum per file size is 2MB</small>
+
+<div *ngFor="let file of selectedFile; let i = index">
+  <div class="file-row">
+<!--    <div class="file-name" contenteditable="true" (input)="contentChange($event, i)" (focusout)="emitChanges()">{{file?.title}}</div>-->
+    <div class="file-name">{{file?.title}}</div>
+    <button mat-icon-button (click)="deleteFile(i)" matTooltip="Remove file" [disabled]="uploading" matTooltipPosition="before">
+      <mat-icon color="warn"><i class="fal fa-times"></i></mat-icon>
+    </button>
+  </div>
+</div>
+<div class="action-button" *ngIf="url">
+  <button (click)="submit()" mat-button [disabled]="!selectedFile.length || uploading">{{ uploading ? 'Uploading' : 'Upload' }}</button>
+</div>

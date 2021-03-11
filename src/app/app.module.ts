@@ -20,7 +20,8 @@ import { CollapseItemComponent } from './navigation/collapse-item/collapse-item.
 import { CollapseItemDirective } from './navigation/collapse-item/collapse-item.directive';
 import { HttpRequestInterceptor } from './core/interceptors/http-reuqest.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { LoginComponent } from './shared/login/login.component';
+import {DeleteButtonModule} from './components/delete-button/delete-button.module';
+import {ConfirmButtonModule} from './components/confirm-button/confirm-button.module';
 
 @NgModule({
     declarations: [
@@ -29,12 +30,12 @@ import { LoginComponent } from './shared/login/login.component';
         DashboardComponent,
         CollapseItemComponent,
         CollapseItemDirective,
-        LoginComponent
     ],
     imports: [
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
+        DeleteButtonModule,
         AppRoutingModule,
         PortalModule,
         MatButtonModule,
@@ -45,7 +46,8 @@ import { LoginComponent } from './shared/login/login.component';
         MatRippleModule,
         MatSlideToggleModule,
         MatSnackBarModule,
-        SharedModule
+        SharedModule,
+        ConfirmButtonModule,
     ],
     providers: [
         {

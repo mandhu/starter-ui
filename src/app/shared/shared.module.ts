@@ -33,7 +33,6 @@ import {HeaderModule} from './header/header.module';
         SearchBarComponent,
         HttpClientModule,
         FilterPipe,
-        ButtonComponent,
         MatButtonModule,
         PermissionDirective
     ]

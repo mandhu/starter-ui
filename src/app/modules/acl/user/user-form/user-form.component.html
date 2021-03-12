@@ -7,39 +7,30 @@
     </div>
     <div>
         <form [formGroup]="form" class="column form-padding">
-            <mat-form-field appearance="outline">
-                <mat-select #singleSelect formControlName="department_id" placeholder="Department">
-                    <mat-option>
-                        <ngx-mat-select-search formControlName="department"
-                                               noEntriesFoundLabel='Not found'
-                                               placeholderLabel="Search Department"></ngx-mat-select-search>
-                    </mat-option>
 
-                    <mat-option *ngFor="let dept of filteredDepartment" [value]="dept.id">
-                        {{ dept.name }}
-                    </mat-option>
-                </mat-select>
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Enter Name" formControlName="name" required>
+                <mat-error>Name is <strong>required</strong></mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-                <mat-label>Mobile Number</mat-label>
-                <textarea formControlName="mobile" matInput placeholder="Mobile Number"></textarea>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Enter email" formControlName="email" required>
+                <mat-error *ngIf="form.get('email').errors?.required">Email is <strong>required</strong></mat-error>
+                <mat-error *ngIf="form.get('email').errors?.email">Not a valid email</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
-                <mat-label>User Type</mat-label>
-                <mat-select  formControlName="type" placeholder="Type">
-                    <mat-option value="other">Other</mat-option>
-                    <mat-option value="core">Core</mat-option>
-                    <mat-option value="software">Software</mat-option>
-                    <mat-option value="support">Support</mat-option>
-                </mat-select>
+
+            <mat-form-field appearance="outline" *ngIf="!data?.id">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Enter password" formControlName="password">
+                <mat-error>Password is <strong>required</strong></mat-error>
             </mat-form-field>
 
-            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
-                <button (click)="close()" [color]="'warn'" mat-flat-button>Cancel</button>
-                <button (click)="submit()" [color]="'primary'" [disabled]="form.invalid"
-                        mat-flat-button>{{ data.id ? "Update" : "Add"}}</button>
+            <div class="w-100 row j-end a-center">
+                <button type="button" (click)="close()" class="btn plain mr-1">Cancel</button>
+                <button (click)="submit()" class="btn primary" [disabled]="form.invalid">{{ data.id ? "Update" : "Add"}}</button>
             </div>
 
         </form>

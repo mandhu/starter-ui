@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../roles/user.service';
 import {RoleService} from '../roles/role.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {PermissionMapService} from '../permission-map/permission-map.service';
@@ -7,6 +6,7 @@ import {MatTreeNestedDataSource} from '@angular/material/tree';
 import {NestedTreeControl} from '@angular/cdk/tree';
 import {MatSlidePanel} from 'ngx-mat-slide-panel';
 import {RoleUsersComponent} from './role-users/role-users.component';
+import {UserService} from '../user/user.service';
 
 @Component({
     selector: 'app-role-management',

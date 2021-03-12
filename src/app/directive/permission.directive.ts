@@ -1,5 +1,5 @@
 import {Directive, Input, TemplateRef, ViewContainerRef} from '@angular/core';
-import {UserService} from '../modules/acl/roles/user.service';
+import {UserService} from '../modules/acl/user/user.service';
 
 @Directive({
     // tslint:disable-next-line:directive-selector

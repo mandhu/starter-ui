@@ -1,6 +1,6 @@
 <div class="w-500">
     <div class="dialog-header">
-        <h3 class="title">Create Role</h3>
+        <h3 class="title">{{data?.id ? 'Edit': 'Add'}} Role</h3>
         <button mat-icon-button (click)="close()">
             <i class="fal fa-times"></i>
         </button>
@@ -9,24 +9,26 @@
         <form [formGroup]="form" class="column form-padding">
 
             <mat-form-field appearance="outline">
-                <mat-label>Outline form field</mat-label>
-                <input matInput placeholder="Placeholder">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" formControlName="name">
+                <mat-error>Name is <strong>required</strong></mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-                <mat-label>Outline form field</mat-label>
-                <input matInput placeholder="Placeholder">
+                <mat-label>Display Name</mat-label>
+                <input matInput placeholder="Display Name" formControlName="display_name">
+                <mat-error>Display name is <strong>required</strong></mat-error>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-                <mat-label>Outline form field</mat-label>
-                <input matInput placeholder="Placeholder">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="Description" formControlName="description">
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
-                <mat-label>Outline form field</mat-label>
-                <input matInput placeholder="Placeholder">
-            </mat-form-field>
+            <div class="w-100 row j-end a-center">
+                <button type="button" (click)="close()" class="btn plain mr-1">Cancel</button>
+                <button (click)="submit()" class="btn primary" [disabled]="form.invalid">{{ data.id ? "Update" : "Add"}}</button>
+            </div>
         </form>
     </div>
 </div>

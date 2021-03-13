@@ -543,6 +543,107 @@ small {
     }
 
 }
+
+.alert {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 1em 1em;
+    border-radius: 2px;
+    margin: .7em 0;
+    .content {
+        width: 100%;
+        display: flex;
+        .message {
+            width: 100% !important;
+            margin-left: 15px !important;
+            h4, p {
+                color: white !important;
+                margin-bottom: .3em;
+            }
+            p {
+                font-size: 12px;
+                font-weight: 300;
+            }
+            h4 {
+                font-weight: 500;
+            }
+            .btn-action {
+                transition: background-color ease-in-out .2s;
+                cursor: pointer;
+                margin-top: .4em;
+                padding: .75em 1.5em;
+                border: 0;
+                border-radius: .3em;
+                font-size: .8em;
+                border: 1px solid white !important;
+                color: white;
+                background-color: transparent;
+                &:focus {
+                    border: none;
+                    outline:0;
+                }
+            }
+        }
+        .icon-container {
+            margin: auto 0;
+            i {
+                font-size: 1.6em;
+            }
+        }
+    }
+    .close {
+        i {
+            cursor: pointer;
+            &:hover {
+                font-weight: bold;
+            }
+        }
+    }
+    .text-container {
+        background-color: yellow !important;
+        padding-left: 2em;
+    }
+    &.danger {
+        background-color: var(--button-danger-hover);
+        .btn-action {
+            &:hover {
+                background-color: white;
+                color: var(--button-danger-hover) !important;
+                i {
+                    color: var(--button-danger-hover) !important;
+                }
+            }
+        }
+    }
+    &.success {
+        background-color: var(--button-success-hover);
+        .btn-action {
+            &:hover {
+                background-color: white;
+                color: var(--button-success-hover) !important;
+                i {
+                    color: var(--button-success-hover) !important;
+                }
+            }
+        }
+    }
+    &.warning {
+        background-color: var(--button-warn-hover);
+        .btn-action {
+            &:hover {
+                background-color: white;
+                color: var(--button-warn-hover) !important;
+                i {
+                    color: var(--button-warn-hover) !important;
+                }
+            }
+        }
+    }
+}
 /************
 * END OVERRIDES
 ************/

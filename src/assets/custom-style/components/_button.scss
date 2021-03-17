@@ -10,7 +10,7 @@
     font-size: 12px;
     cursor: pointer;
     font-weight: 500;
-    transition: background-color ease-in-out .3s;
+    transition: all ease-in-out .3s;
     color: var(--main-text-color);
     background-color: transparent;
     i {
@@ -51,7 +51,7 @@
         border: 1px solid var(--main-text-color);
         color: var(--main-text-color);
         &:hover {
-            background-color: var(--main-text-color);
+            background-color: var(--button-default-hover);
             color: var(--btn-fill-color);
         }
     }
@@ -67,85 +67,85 @@
     }
 
     &.primary {
-        background-color: var(--button-primary-color);
+        background-color: var(--primary-color);
         color: var(--btn-fill-color);
         &:hover {
-            background-color: var(--button-primary-hover);
+            background-color: var(--primary-hover);
         }
         &.outline {
             background-color: transparent;
-            border: 1px solid var(--button-primary-color);
-            color: var(--button-primary-color);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
             &:hover {
-                background-color: var(--button-primary-color);
+                background-color: var(--primary-color);
                 color: var(--btn-fill-color);
             }
         }
     }
 
     &.accent {
-        background-color: var(--button-secondary-color);
+        background-color: var(--secondary-color);
         color: var(--btn-fill-color);
         &:hover {
-            background-color: var(--button-secondary-hover);
+            background-color: var(--secondary-hover);
         }
         &.outline {
             background-color: transparent;
-            border: 1px solid var(--button-secondary-color);
-            color: var(--button-secondary-color);
+            border: 1px solid var(--secondary-color);
+            color: var(--secondary-color);
             &:hover {
-                background-color: var(--button-secondary-color);
+                background-color: var(--secondary-color);
                 color: var(--btn-fill-color);
             }
         }
     }
 
     &.success {
-        background-color: var(--button-success-color);
+        background-color: var(--success-color);
         color: var(--btn-fill-color);
         &:hover {
-            background-color: var(--button-success-hover);
+            background-color: var(--success-hover);
         }
         &.outline {
             background-color: transparent;
-            border: 1px solid var(--button-success-color);
-            color: var(--button-success-color);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
             &:hover {
-                background-color: var(--button-success-color);
+                background-color: var(--success-color);
                 color: var(--btn-fill-color);
             }
         }
     }
 
     &.danger {
-        background-color: var(--button-danger-color);
+        background-color: var(--danger-color);
         color: var(--btn-fill-color);
         &:hover {
-            background-color: var(--button-danger-hover);
+            background-color: var(--danger-hover);
         }
         &.outline {
             background-color: transparent;
-            border: 1px solid var(--button-danger-color);
-            color: var(--button-danger-color);
+            border: 1px solid var(--danger-color);
+            color: var(--danger-color);
             &:hover {
-                background-color: var(--button-danger-color);
+                background-color: var(--danger-color);
                 color: var(--btn-fill-color);
             }
         }
     }
 
     &.warn {
-        background-color: var(--button-warn-color);
+        background-color: var(--warning-color);
         color: var(--btn-fill-color);
         &:hover {
-            background-color: var(--button-warn-hover);
+            background-color: var(--warning-hover);
         }
         &.outline {
             background-color: transparent;
-            border: 1px solid var(--button-warn-color);
-            color: var(--button-warn-color);
+            border: 1px solid var(--warning-color);
+            color: var(--warning-color);
             &:hover {
-                background-color: var(--button-warn-color);
+                background-color: var(--warning-color);
                 color: var(--btn-fill-color);
             }
         }

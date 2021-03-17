@@ -28,6 +28,7 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "src/assets/custom-style/main.scss",
                             "src/custom-theme.scss"
                         ,              "src/styles.styl"
                         ],

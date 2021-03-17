@@ -1,0 +1,55 @@
+
+/// Regular font family
+/// @type List
+$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
+
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+// Set Theme Colors
+$primary-color: #0984e3;
+$secondary-color: #6c5ce7;
+$success-color: #00b894;
+$warning-color: #e17055;
+$danger-color: #d63031;
+
+// Settings
+$hover-darken-level: 7%;
+
+
+:root {
+    --button-plain-hover: #f3f3f3;
+    --button-disabled-text-color:  #a4a7ac;
+    --btn-fill-color: #fff;
+    --button-disabled-default-bg: #e6e6e6;
+    --button-primary-color: #{$primary-color};
+    --button-primary-hover: #{darken($primary-color, $hover-darken-level)};
+    --button-secondary-color: #{$secondary-color};
+    --button-secondary-hover: #{darken($secondary-color, $hover-darken-level)};
+    --button-success-color: #{$success-color};
+    --button-success-hover: #{darken($success-color, $hover-darken-level)};
+    --button-warn-color:#{$warning-color};
+    --button-warn-hover: #{darken($warning-color, $hover-darken-level)};
+    --button-danger-color: #{$danger-color};
+    --button-danger-hover: #{darken($danger-color, $hover-darken-level)};
+}
+
+.dark-theme {
+    --button-plain-hover: #f3f3f3;
+    --button-disabled-text-color:  #a4a7ac;
+    --btn-fill-color: #fff;
+    --button-disabled-default-bg: #e6e6e6;
+    --button-primary-color: #0984e3;
+    --button-primary-hover: #0975c7;
+    --button-secondary-color: #6c5ce7;
+    --button-secondary-hover: #5747d1;
+    --button-success-color: #00b894;
+    --button-success-hover: #018a6e;
+    --button-warn-color: #e17055;
+    --button-warn-hover: #c95e43;
+    --button-danger-color: #d63031;
+    --button-danger-hover: #be2b2b;
+}
+
+

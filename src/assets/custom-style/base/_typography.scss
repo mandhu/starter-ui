@@ -1,7 +1,13 @@
+@import "../abstracts/_variables";
 /**
  * Basic typography style for copy text
  */
 body {
-  color: $text-color;
+  // color: $text-color;
   font: normal 125% / 1.4 $text-font-stack;
+}
+
+
+body {
+  color: var(--text-color);
 }

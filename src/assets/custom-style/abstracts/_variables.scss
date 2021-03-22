@@ -8,11 +8,14 @@ $text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvet
 $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
 
 // Set Theme Colors
-$primary-color: darken(#0984e3, 0%);
-$secondary-color: #6c5ce7;
-$success-color: #00b894;
-$warning-color: #e17055;
-$danger-color: #d63031;
+$primary-color: darken(#227093, 0%);
+$secondary-color: #474787;
+$success-color: #218c74;
+$warning-color: #cd6133;
+$danger-color: #b33939;
+
+$light-text: #4b4b4b;
+$dark-text: #f1f2f6;
 
 
 $dark-priamry: #1a202e;
@@ -49,6 +52,8 @@ $lighten-level: 7%;
     --danger-color: #{$danger-color};
     --danger-hover: #{darken($danger-color, $darken-level)};
 
+    --text-color: #{$light-text};
+
 }
 
 .dark-theme {
@@ -56,6 +61,9 @@ $lighten-level: 7%;
     --button-plain-hover: #{$dark-secondary};
     --button-disabled-default-bg: #{$dark-secondary};
     --button-default-hover: #{$dark-secondary};
+
+    --text-color: #{$dark-text};
+
     
 }
 

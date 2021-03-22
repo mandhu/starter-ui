@@ -8,7 +8,7 @@
             <ng-template [ngForOf]="menus" let-item ngFor>
                 <div class="nav-item">
                     <div *ngIf="item.children.length" class="menu-link" matRipple routerLinkActive="active" (click)="openAsidePanel(item)">
-                        <i [class]="'nav-icon fad fa-'+item.icon"></i>
+                        <!-- <i [class]="'nav-icon fad fa-'+item.icon"></i> -->
                         <span>{{item?.name}}</span>
                     </div>
 

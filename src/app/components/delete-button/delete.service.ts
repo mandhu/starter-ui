@@ -9,7 +9,8 @@ export class DeleteService {
 
     constructor(private http: HttpClient) { }
 
-    delete(url: string): Observable<any> {
-        return this.http.delete(`api/${url}`);
+    delete(url: string, remarks = null): Observable<any> {
+        const uri = remarks ? `${url}?remarks=${remarks}` : url;
+        return this.http.delete(`${uri}`);
     }
 }

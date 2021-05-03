@@ -3,6 +3,11 @@ import { fadeInLeft, fadeOutLeft } from '../animations/fade';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { OverlayContainer, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { DropdownDirective } from '../components/dropdown/dropdown.directive';
+import {DEFAULT_MENU} from './menu';
+import {UserService} from '../modules/acl/user/user.service';
+import {Router} from '@angular/router';
+import {ChangePasswordComponent} from './change-password/change-password.component';
+import {MatDialog} from '@angular/material/dialog';
 
 interface Menu {
     icon: string;
@@ -25,75 +30,8 @@ export class NavigationComponent implements OnInit {
     hideSideBar = false;
     activeMenu = null;
     selectedMenu: Menu;
-    menus: Menu[]  = [
-        {
-            icon: 'tachometer-alt',
-            link: '/',
-            name: 'Dashboard',
-            children: []
-        },
-        {
-            icon: 'file-invoice-dollar',
-            link: '/sales',
-            name: 'Sales',
-            children: []
-        },
-        {
-            icon: 'shield-check',
-            link: '/',
-            name: 'ACL',
-            parent: true,
-            permissions: null,
-            children: [
-                {
-                    icon: 'users-cog',
-                    link: '/',
-                    name: 'Manage',
-                    parent: true,
-                    children: [
-                        {
-                            icon: 'user-lock',
-                            link: '/acl/permission-map',
-                            name: 'Permission Map',
-                            children: [],
-                            permissions: 'permission_map'
-                        },
-                        {
-                            icon: 'user-lock',
-                            link: '/acl/role-map',
-                            name: 'Role Map',
-                            children: [],
-                            permissions: 'role_map'
-                        },
-                        {
-                            icon: 'user-lock',
-                            link: '/acl/role-management',
-                            name: 'Role Management',
-                            children: [],
-                            permissions: 'role_management'
-                        },
-                    ],
-                    permissions: null
-                },
-                {
-                    icon: 'user-lock',
-                    link: '/acl/users',
-                    name: 'Users',
-                    children: [],
-                    permissions: 'users',
-                    parent: false,
-                },
-                {
-                    icon: 'lock-alt',
-                    link: '/acl/roles',
-                    name: 'Roles',
-                    children: [],
-                    permissions: 'roles',
-                    parent: false,
-                },
-            ],
-        },
-    ];
+    menus: Menu[] = DEFAULT_MENU;
+    userMenu: Menu[];
     url = null;
     openAside = false;
     private overlay: HTMLElement | null;
@@ -107,6 +45,9 @@ export class NavigationComponent implements OnInit {
         private changeDetectorRef: ChangeDetectorRef,
         private elementRef: ElementRef,
         private renderer2: Renderer2,
+        public useService: UserService,
+        private router: Router,
+        private dialog: MatDialog,
         private scrollStrategyOptions: ScrollStrategyOptions,
         overlayContainer: OverlayContainer
     ) {
@@ -118,8 +59,66 @@ export class NavigationComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.useService.getSetting();
+        this.router.events.subscribe(res => {
+            if (this.openAside) {
+                this.handleOverlayClick();
+            }
+        });
 
+        this.userMenu = this.menus;
+        // this.useService.userPermissions.subscribe((permissions: string[]) => {
+        //     if (permissions.length) {
+        //         this.buildMenu(permissions);
+        //     }
+        // });
     }
+
+    buildMenu(data): any {
+        this.userMenu = this.menus.map(menu => {
+            // console.log(menu);
+            if (menu.children.length) {
+                const childMenus = menu.children.map(child => {
+                    if (child.parent) {
+                        const childMenu = child.children.map(kid => {
+                            if (!!data.find(perm => perm === kid.permissions)) {
+                                return kid;
+                            }
+                        }).filter(item => item);
+                        return {
+                            ...child,
+                            children: childMenu
+                        };
+                    } else {
+                        if (!!data.find(perm => perm === child.permissions)) {
+                            return child;
+                        }
+                    }
+                }).filter(item => {
+                    if (!item) {
+                        return false;
+                    }
+                    if (!item.parent) {
+                        return true;
+                    }
+                    return !!item.children.length;
+                });
+
+
+                return {
+                    ...menu,
+                    children: childMenus
+                };
+            } else {
+                if (!!data.find(perm => perm === menu.permissions)) {
+                    return menu;
+                }
+            }
+
+        }).filter(item => item);
+    }
+
+
 
     openAsidePanel(item: Menu): void {
         if (this.selectedMenu === item && this.openAside) {
@@ -196,7 +195,12 @@ export class NavigationComponent implements OnInit {
         });
     }
 
-    changePassword(): void {
+    changePassword(disableClose = false): void {
+        this.dialog.open(ChangePasswordComponent, {
+            data: {disableClose},
+            width: '500px',
+            disableClose
+        });
     }
 
     logout(): void {

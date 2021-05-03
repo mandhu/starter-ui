@@ -22,6 +22,10 @@ import { HttpRequestInterceptor } from './core/interceptors/http-reuqest.interce
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {DeleteButtonModule} from './components/delete-button/delete-button.module';
 import {ConfirmButtonModule} from './components/confirm-button/confirm-button.module';
+import {LoginComponent} from './pages/login/login.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {ChangePasswordComponent} from './navigation/change-password/change-password.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +34,8 @@ import {ConfirmButtonModule} from './components/confirm-button/confirm-button.mo
         DashboardComponent,
         CollapseItemComponent,
         CollapseItemDirective,
+        LoginComponent,
+        ChangePasswordComponent
     ],
     imports: [
         CommonModule,
@@ -48,6 +54,8 @@ import {ConfirmButtonModule} from './components/confirm-button/confirm-button.mo
         MatSnackBarModule,
         SharedModule,
         ConfirmButtonModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
     providers: [
         {

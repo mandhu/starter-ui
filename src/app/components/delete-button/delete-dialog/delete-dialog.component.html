@@ -4,7 +4,14 @@
     </div>
     <div class="content">
         <i class="fal fa-info-circle"></i>
-        <p class="desc text-color">{{ data.description }}</p>
+        <p class="desc text-color">{{ data.description || '' }}</p>
+        <div style="padding: 1em 0" class="w-100" *ngIf="remarks">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Remarks</mat-label>
+                <input matInput [placeholder]="remarkPlaceholder" [formControl]="remarkControl">
+            </mat-form-field>
+        </div>
+
     </div>
     <div class="action">
 
@@ -13,7 +20,7 @@
             No
         </button>
 
-        <button (click)="submit()" mat-flat-button color="warn">
+        <button (click)="submit()" [disabled]="(remarks && !remarkControl.value)" mat-flat-button color="warn">
 <!--            <i class="fal fa-check"></i>-->
             YES
         </button>

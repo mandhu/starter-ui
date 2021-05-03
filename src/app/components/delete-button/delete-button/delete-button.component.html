@@ -6,6 +6,6 @@
     <mat-icon color="warn"><i class="fal fa-trash-alt"></i></mat-icon>
     <span>Delete</span>
 </button>
-<button mat-icon-button *ngIf="icon && !menuItem && !button" class="delete-icon-btn" (click)="openDialog()">
-    <i class="fal fa-trash-alt delete-icon"></i>
+<button *ngIf="icon && !menuItem && !button" class="delete-icon-btn" [ngClass]="btnClass" (click)="openDialog()">
+    <i class="fal fa-trash-alt"></i>
 </button>

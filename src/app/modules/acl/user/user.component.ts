@@ -5,6 +5,8 @@ import {MatSlidePanel} from 'ngx-mat-slide-panel';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {UserFormComponent} from './user-form/user-form.component';
+import {PasswordResetComponent} from './password-reset/password-reset.component';
+import {MatDialog} from '@angular/material/dialog';
 
 export interface UserComponent extends NxBaseFunctions {
     test;
@@ -37,10 +39,17 @@ export class UserComponent implements OnInit {
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private sb: MatSnackBar,
+        private dialog: MatDialog
     ) {
     }
 
     ngOnInit(): void {
     }
 
+    resetPassword(data: any): void {
+        this.dialog.open(PasswordResetComponent, {
+            data,
+            width: '500px'
+        });
+    }
 }

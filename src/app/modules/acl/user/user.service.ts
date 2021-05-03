@@ -40,17 +40,20 @@ export class UserService {
 
     logout(): void {
         this.user.next(null);
-        localStorage.removeItem('token');
+        this.userPermissions.next([]);
         this.router.navigate(['/login']);
     }
 
     setToken(token: string): void {
         this.token = token;
-        localStorage.setItem('token', token);
     }
 
     changePassword(data: any): Observable<any> {
         return this.http.post('/api/users/change_password', data);
+    }
+
+    resetPassword(data: any): Observable<any> {
+        return this.http.post('/api/users/reset_password', data);
     }
 
     register(data): Observable<any> {
@@ -81,6 +84,7 @@ export class UserService {
         if (!this.user.value) {
             this.http.get('/api/users/settings').subscribe((res: any) => {
                 this.user.next(res.data.user);
+                this.userPermissions.next(res.data.permissions);
             }, error => {});
         }
     }

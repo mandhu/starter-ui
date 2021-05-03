@@ -15,6 +15,7 @@ import {MatRippleModule} from '@angular/material/core';
 import {MatListModule} from '@angular/material/list';
 import {MaterialCommonModule} from '../../shared/MaterialCommonModule';
 import {FormsModule} from '@angular/forms';
+import {PasswordResetComponent} from './user/password-reset/password-reset.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {FormsModule} from '@angular/forms';
         RoleManagementComponent,
         RoleUsersComponent,
         UserComponent,
-        UserFormComponent
+        UserFormComponent,
+        PasswordResetComponent
     ],
     imports: [
         SharedModule,

@@ -6,13 +6,18 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { DeleteDirective } from './delete.directive';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 
 
 @NgModule({
     declarations: [
         DeleteButtonComponent,
-        DeleteDialogComponent
+        DeleteDialogComponent,
+        DeleteDirective
     ],
     imports: [
         CommonModule,
@@ -20,9 +25,13 @@ import {MatIconModule} from '@angular/material/icon';
         MatButtonModule,
         MatMenuModule,
         MatIconModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
     exports: [
-        DeleteButtonComponent
+        DeleteButtonComponent,
+        DeleteDirective
     ]
 })
 export class DeleteButtonModule { }

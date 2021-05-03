@@ -3,12 +3,14 @@ import {CommonModule} from '@angular/common';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ConfirmButtonComponent} from './confirm-button.component';
 import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component';
+import { ConfirmDirective } from './confirm.directive';
 
 
 @NgModule({
     declarations: [
         ConfirmButtonComponent,
-        ConfirmDialogComponent
+        ConfirmDialogComponent,
+        ConfirmDirective
     ],
     imports: [
         CommonModule,
@@ -16,7 +18,8 @@ import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component'
     ],
     exports: [
         ConfirmButtonComponent,
-        ConfirmDialogComponent
+        ConfirmDialogComponent,
+        ConfirmDirective
     ]
 })
 export class ConfirmButtonModule { }

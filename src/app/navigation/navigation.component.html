@@ -5,10 +5,10 @@
             <img class="img" src="assets/images/logo.jpg" alt="logo">
         </div>
         <div class="nav-links">
-            <ng-template [ngForOf]="menus" let-item ngFor>
+            <ng-template [ngForOf]="userMenu" let-item ngFor>
                 <div class="nav-item">
                     <div *ngIf="item.children.length" class="menu-link" matRipple routerLinkActive="active" (click)="openAsidePanel(item)">
-                        <!-- <i [class]="'nav-icon fad fa-'+item.icon"></i> -->
+                         <i [class]="'nav-icon fad fa-'+item.icon"></i>
                         <span>{{item?.name}}</span>
                     </div>
 
@@ -43,14 +43,9 @@
                 <div class="profile row j-start a-center">
                     <img class="image" src="/assets/images/logo.jpg" alt="avator">
                     <div class="profile-data px-24 text-center">
-                        <p>Mamdhooh Mohamed</p>
-                        <small>USER NAME HRE</small>
+                        <p>{{(useService.user | async)?.name}}</p>
+                        <small>{{(useService.user | async)?.email}}</small>
                     </div>
-
-                    <!--                    <div class="row j-between w-100 py-1 px-24" style="padding-bottom: 8px">-->
-                    <!--                        <button mat-stroked-button (click)="changePassword()">Change password</button>-->
-                    <!--                        <button mat-stroked-button (click)="logout()">logout</button>-->
-                    <!--                    </div>-->
                 </div>
                 <div class="column actions">
                     <div class="row item border-bottom" matRipple dropdownItem (click)="changePassword()">

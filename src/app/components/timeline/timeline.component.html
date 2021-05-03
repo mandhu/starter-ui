@@ -1,0 +1,22 @@
+<div class="timeline-wrapper">
+    <div class="dot-line">
+        <div class="dot" *ngIf="status != 'approved' && status != 'rejected'" [class.pending]="status === 'pending' && active">
+            <div class="filled-circle" [class.pending]="status === 'pending' && active"></div>
+        </div>
+
+        <div class="dot approved" *ngIf="status == 'approved'">
+            <i class="fal fa-check" style="color: white"></i>
+        </div>
+
+        <div class="dot rejected" *ngIf="status == 'rejected'">
+            <i class="fal fa-times" style="color: white"></i>
+        </div>
+
+        <div *ngIf="!last" class="line" [class.approved]="status === 'approved'"></div>
+    </div>
+    <div class="title-desc">
+        <p class="title">{{title}} <span *ngIf="edit" (click)="edited.emit(true)" class="underline-hover color-primary edit-link">Edit</span></p>
+        <p class="description">{{description}}</p>
+        <p *ngIf="caption" class="description" style="margin-top: 4px">{{caption}}</p>
+    </div>
+</div>

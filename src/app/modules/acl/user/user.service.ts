@@ -39,9 +39,13 @@ export class UserService {
     }
 
     logout(): void {
-        this.user.next(null);
-        this.userPermissions.next([]);
-        this.router.navigate(['/login']);
+        if (this.user.value) {
+            this.http.post('/api/users/logout', {}).subscribe(res => {
+                this.user.next(null);
+                this.userPermissions.next([]);
+                this.router.navigate(['/login']);
+            }, err => {});
+        }
     }
 
     setToken(token: string): void {

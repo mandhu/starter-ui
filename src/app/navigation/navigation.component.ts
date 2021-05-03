@@ -204,7 +204,7 @@ export class NavigationComponent implements OnInit {
     }
 
     logout(): void {
-
+        this.useService.logout();
     }
 
     changeTheme(): void {

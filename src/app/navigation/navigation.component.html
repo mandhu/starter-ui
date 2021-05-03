@@ -57,7 +57,7 @@
                         <p class="flex mr-1">Change Theme</p>
                         <i class="fad fa-toggle-{{darkTheme ? 'on' : 'off'}}" style="font-size: 24px"></i>
                     </div>
-                    <div class="row item" matRipple>
+                    <div class="row item" matRipple (click)="logout()">
                         <mat-icon class="fad fa-sign-out-alt"></mat-icon>
                         <p>Log Out</p>
                     </div>

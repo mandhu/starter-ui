@@ -29,7 +29,7 @@ import { startWith, switchMap } from 'rxjs/operators';
             </div>
         </ng-template>
     `,
-    styleUrls: ['./dropdown.component.styl']
+    styleUrls: ['./dropdown.component.scss']
 })
 export class DropdownComponent implements AfterContentInit{
 

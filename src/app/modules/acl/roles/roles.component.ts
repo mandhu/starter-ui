@@ -19,7 +19,7 @@ export interface RolesComponent extends NxBaseFunctions {
 @Component({
     selector: 'app-roles',
     templateUrl: './roles.component.html',
-    styleUrls: ['./roles.component.styl']
+    styleUrls: ['./roles.component.scss']
 })
 export class RolesComponent implements OnInit {
     displayedColumns: string[] = ['name', 'display_name', 'actions'];

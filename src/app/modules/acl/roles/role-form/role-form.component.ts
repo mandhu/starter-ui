@@ -14,7 +14,7 @@ export interface RoleFormComponent extends NxForm {
 @Component({
     selector: 'app-role-form',
     templateUrl: './role-form.component.html',
-    styleUrls: ['./role-form.component.styl']
+    styleUrls: ['./role-form.component.scss']
 })
 
 @NxForm({

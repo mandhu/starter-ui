@@ -5,7 +5,6 @@ import {SearchBarComponent} from './search-bar/search-bar.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FilterPipe} from '../pipes/filter.pipe';
 import {MatIconModule} from '@angular/material/icon';
-import {ButtonComponent} from './button/button.component';
 import {PermissionDirective} from '../directive/permission.directive';
 import {MatButtonModule} from '@angular/material/button';
 import {HeaderModule} from './header/header.module';
@@ -15,7 +14,6 @@ import {HeaderModule} from './header/header.module';
     declarations: [
         SearchBarComponent,
         FilterPipe,
-        ButtonComponent,
         PermissionDirective,
     ],
     imports: [

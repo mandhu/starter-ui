@@ -16,7 +16,7 @@ export interface UserComponent extends NxBaseFunctions {
 @Component({
     selector: 'app-user',
     templateUrl: './user.component.html',
-    styleUrls: ['./user.component.styl']
+    styleUrls: ['./user.component.scss']
 })
 @NxBaseFunctions({
     serviceName: 'userService',

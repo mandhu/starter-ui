@@ -5,7 +5,7 @@ import {ConfirmDialogComponent} from './confirm-dialog/confirm-dialog.component'
 @Component({
     selector: 'app-confirm-button',
     templateUrl: './confirm-button.component.html',
-    styleUrls: ['./confirm-button.component.styl']
+    styleUrls: ['./confirm-button.component.scss']
 })
 export class ConfirmButtonComponent implements OnInit {
     @Input() btnClass = 'btn';

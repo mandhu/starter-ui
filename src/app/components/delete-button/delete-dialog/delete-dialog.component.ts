@@ -8,7 +8,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
     selector: 'app-delete-dialog',
     templateUrl: './delete-dialog.component.html',
-    styleUrls: ['./delete-dialog.component.styl']
+    styleUrls: ['./delete-dialog.component.scss']
 })
 export class DeleteDialogComponent implements OnInit {
 

@@ -6,7 +6,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
     selector: 'app-collapse-item',
     templateUrl: './collapse-item.component.html',
-    styleUrls: ['./collapse-item.component.styl']
+    styleUrls: ['./collapse-item.component.scss']
 })
 export class CollapseItemComponent implements AfterContentInit {
     @HostBinding('style.height') public height: SafeStyle = '45px';

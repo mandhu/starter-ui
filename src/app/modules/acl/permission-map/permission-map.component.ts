@@ -6,7 +6,7 @@ import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 @Component({
     selector: 'app-permission-map',
     templateUrl: './permission-map.component.html',
-    styleUrls: ['./permission-map.component.styl']
+    styleUrls: ['./permission-map.component.scss']
 })
 export class PermissionMapComponent implements OnInit {
 

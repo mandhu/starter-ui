@@ -21,7 +21,7 @@ interface Menu {
 @Component({
     selector: 'app-navigation',
     templateUrl: './navigation.component.html',
-    styleUrls: ['./navigation.component.styl'],
+    styleUrls: ['./navigation.component.scss'],
     animations: [fadeInLeft, fadeOutLeft]
 })
 export class NavigationComponent implements OnInit {

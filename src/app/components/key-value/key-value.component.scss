@@ -1,0 +1,17 @@
+:host {
+    padding: .5em 0;
+}
+
+.key {
+    color: var(--main-text-color-1);
+    margin-right: .5em;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.value {
+    color: var(--main-text-color);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+}

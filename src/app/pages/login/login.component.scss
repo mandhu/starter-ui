@@ -2,8 +2,8 @@
     #login {
         width: 100%;
         overflow: auto;
-        background-color #373737;
-        min-height 100vh;
+        background-color: #373737;
+        min-height: 100vh;
         #login-form-wrapper {
             flex: 1 0 auto;
             padding: 32px;
@@ -14,12 +14,12 @@
                 max-width: 400px;
                 padding: 40px 32px;
                 text-align: center;
-                background var(--main-forground)
-                border-radius 6px
+                background: var(--main-forground);
+                border-radius: 6px;
                 .logo {
                     margin: 23px auto 32px;
                     img {
-                        width 100%
+                        width: 100%
                     }
                 }
 
@@ -34,12 +34,12 @@
                 }
 
                 form {
-                    width 100%
+                    width: 100%
                 }
 
                 .btn {
-                    font-size 1em
-                    margin 0 0 2em
+                    font-size: 1em;
+                    margin: 0 0 2em
                 }
 
             }

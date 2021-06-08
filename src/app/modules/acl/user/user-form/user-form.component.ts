@@ -12,7 +12,7 @@ export interface UserFormComponent extends NxForm {
 @Component({
     selector: 'app-user-form',
     templateUrl: './user-form.component.html',
-    styleUrls: ['./user-form.component.styl']
+    styleUrls: ['./user-form.component.scss']
 })
 @NxForm({
     serviceName: 'userService',

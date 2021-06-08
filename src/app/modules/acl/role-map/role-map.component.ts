@@ -10,7 +10,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
     selector: 'app-role-map',
     templateUrl: './role-map.component.html',
-    styleUrls: ['./role-map.component.styl']
+    styleUrls: ['./role-map.component.scss']
 })
 export class RoleMapComponent implements OnInit {
 

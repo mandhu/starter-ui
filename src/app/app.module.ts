@@ -35,7 +35,7 @@ import {ChangePasswordComponent} from './navigation/change-password/change-passw
         CollapseItemComponent,
         CollapseItemDirective,
         LoginComponent,
-        ChangePasswordComponent
+        ChangePasswordComponent,
     ],
     imports: [
         CommonModule,

@@ -5,7 +5,7 @@ import {RoleService} from '../../roles/role.service';
 @Component({
     selector: 'app-role-users',
     templateUrl: './role-users.component.html',
-    styleUrls: ['./role-users.component.styl']
+    styleUrls: ['./role-users.component.scss']
 })
 export class RoleUsersComponent implements OnInit {
 

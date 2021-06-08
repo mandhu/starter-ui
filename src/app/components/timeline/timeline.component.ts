@@ -4,7 +4,7 @@ import {DatePipe} from '@angular/common';
 @Component({
     selector: 'app-timeline',
     templateUrl: './timeline.component.html',
-    styleUrls: ['./timeline.component.styl'],
+    styleUrls: ['./timeline.component.scss'],
     providers: [DatePipe]
 })
 export class TimelineComponent implements OnInit {

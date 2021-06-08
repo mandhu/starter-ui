@@ -1,0 +1,53 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 8px;
+}
+.file-row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+
+    .file-name {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 4px 8px;
+        margin-right: .5em;
+        transition: background-color .3s ease-in;
+        //&:hover {
+        //  background-color #eeee
+        //  &:after {
+        //    position absolute
+        //    content: "Click to edit file name";
+        //    color: #fff;
+        //    border-radius: 4px;
+        //    margin: 14px;
+        //    max-width: 250px;
+        //    padding-left: 8px;
+        //    padding-right: 8px;
+        //    overflow: hidden;
+        //    text-overflow: ellipsis;
+        //    background: rgba(97, 97, 97, 0.9);
+        //    font-family: Roboto, "Helvetica Neue", sans-serif;
+        //    font-size: 10px;
+        //    padding-top: 6px;
+        //    padding-bottom: 6px;
+        //  }
+        //}
+        &:focus {
+            &:after {
+                display: none
+            }
+        }
+    }
+}
+.action-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

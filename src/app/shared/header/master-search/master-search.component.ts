@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
     selector: 'app-master-search',
     templateUrl: './master-search.component.html',
-    styleUrls: ['./master-search.component.styl']
+    styleUrls: ['./master-search.component.scss']
 })
 
 export class MasterSearchComponent implements OnInit {

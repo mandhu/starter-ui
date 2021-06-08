@@ -5,7 +5,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-simple-file-uploader',
   templateUrl: './simple-file-uploader.component.html',
-  styleUrls: ['./simple-file-uploader.component.styl']
+  styleUrls: ['./simple-file-uploader.component.scss']
 })
 export class SimpleFileUploaderComponent implements OnInit {
   selectedFile: any[] = [];

@@ -11,7 +11,7 @@ import {UserService} from '../user/user.service';
 @Component({
     selector: 'app-role-management',
     templateUrl: './role-management.component.html',
-    styleUrls: ['./role-management.component.styl']
+    styleUrls: ['./role-management.component.scss']
 })
 export class RoleManagementComponent implements OnInit {
 

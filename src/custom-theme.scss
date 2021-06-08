@@ -1,50 +1,49 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import '~@angular/material/theming';
+@use '~@angular/material' as mat;
 // Plus imports for other components in your app.
 
-$general-typography: mat-typography-config(
+$general-typography: mat.define-typography-config(
     $font-family:   'Roboto, "Helvetica Neue", sans-serif',
 );
 
-$mat-blue: (
-    50: #e3f2fd,
-    100: #bbdefb,
-    200: #90caf9,
-    300: #64b5f6,
-    400: #42a5f5,
-    500: #0069ff,
-    600: #1e88e5,
-    700: #1976d2,
-    800: #1565c0,
-    900: #0d47a1,
-    A100: #82b1ff,
-    A200: #448aff,
-    A400: #2979ff,
-    A700: #2962ff,
-    contrast: (
-        50: $dark-primary-text,
-        100: $dark-primary-text,
-        200: $dark-primary-text,
-        300: $dark-primary-text,
-        400: $dark-primary-text,
-        500: $light-primary-text,
-        600: $light-primary-text,
-        700: $light-primary-text,
-        800: $light-primary-text,
-        900: $light-primary-text,
-        A100: $dark-primary-text,
-        A200: $light-primary-text,
-        A400: $light-primary-text,
-        A700: $light-primary-text,
-    )
-);
+//$blue-palette: (
+//    50: #e3f2fd,
+//    100: #bbdefb,
+//    200: #90caf9,
+//    300: #64b5f6,
+//    400: #42a5f5,
+//    500: #0069ff,
+//    600: #1e88e5,
+//    700: #1976d2,
+//    800: #1565c0,
+//    900: #0d47a1,
+//    A100: #82b1ff,
+//    A200: #448aff,
+//    A400: #2979ff,
+//    A700: #2962ff,
+//    contrast: (
+//        50: rgba(black, 0.87),
+//        100: rgba(black, 0.87),
+//        200: rgba(black, 0.87),
+//        300: rgba(black, 0.87),
+//        400: rgba(black, 0.87),
+//        500: white,
+//        600: white,
+//        700: white,
+//        800: white,
+//        900: white,
+//        A100: rgba(black, 0.87),
+//        A200: white,
+//        A400: white,
+//        A700: white,
+//    )
+//);
 
 
-$ngx-primary: mat-palette($mat-blue);
-$ngx-accent: mat-palette($mat-pink, A200, A100, A400);
-$ngx-warn: mat-palette($mat-red);
+$ngx-primary: mat.define-palette(mat.$blue-palette);
+$ngx-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$ngx-warn: mat.define-palette(mat.$red-palette);
 
-$light-theme: mat-light-theme((
+$light-theme: mat.define-light-theme((
     color: (
         primary: $ngx-primary,
         accent: $ngx-accent,
@@ -52,7 +51,7 @@ $light-theme: mat-light-theme((
     )
 ));
 
-$dark-theme: mat-dark-theme((
+$dark-theme: mat.define-dark-theme((
     color: (
         primary: $ngx-primary,
         accent: $ngx-accent,
@@ -65,8 +64,8 @@ $accent: map-get($light-theme, accent);
 $warn: map-get($light-theme, warn);
 
 
-@include mat-core($general-typography);
-@include angular-material-theme($light-theme);
+@include mat.core($general-typography);
+@include mat.all-component-themes($light-theme);
 
 :root {
     --main-background:  #f8f9fb;
@@ -105,9 +104,9 @@ $warn: map-get($light-theme, warn);
     --searchbar-small-bg: #ffffff;
     --search-focus: #ffffff;
 
-    --color-primary: #{mat-color($primary)};
-    --color-accent: #{mat-color($accent)};
-    --color-warn: #{mat-color($warn)};
+    --color-primary: #{mat.get-color-from-palette($primary)};
+    --color-accent: #{mat.get-color-from-palette($accent)};
+    --color-warn: #{mat.get-color-from-palette($warn)};
     --color-completed: #3e8054;
     --color-pending: #956b16;
     --color-approved: #7e57c2;
@@ -130,7 +129,7 @@ $warn: map-get($light-theme, warn);
 
 }
 .dark-theme {
-    @include angular-material-color($dark-theme);
+    @include mat.all-component-colors($dark-theme);
 
     --main-background:  #1a202e;
     --main-forground: #27303f;
@@ -217,22 +216,22 @@ small {
     background-color: var(--main-background);
 }
 .bg-primary {
-    background-color: mat-color($primary);
+    background-color: mat.get-color-from-palette($primary);
 }
 .bg-accent {
-    background-color: mat-color($accent);
+    background-color: mat.get-color-from-palette($accent);
 }
 .primary-50 {
-    background-color: mat-color($primary, 50);
+    background-color: mat.get-color-from-palette($primary, 50);
 }
 .primary-100 {
-    background-color: mat-color($primary, 100);
+    background-color: mat.get-color-from-palette($primary, 100);
 }
 .bg-primary-200 {
-    background-color: mat-color($primary, 200);
+    background-color: mat.get-color-from-palette($primary, 200);
 }
 .primary-A100 {
-    background-color: mat-color($primary, A100);
+    background-color: mat.get-color-from-palette($primary, A100);
 }
 .border {
     border: $border;
@@ -253,13 +252,13 @@ small {
     border-top: $border;
 }
 .color-primary {
-    color: mat-color($primary);
+    color: mat.get-color-from-palette($primary);
 }
 .color-accent {
-    color: mat-color($accent);
+    color: mat.get-color-from-palette($accent);
 }
 .color-warn {
-    color: mat-color($warn);
+    color: mat.get-color-from-palette($warn);
 }
 .active-background {
     background-color: var(--nav-active-background);
@@ -347,297 +346,6 @@ small {
 
 }
 
-
-// .btn {
-//     padding: .75em 1.5em;
-//     border: 0;
-//     margin: .5em 1em;
-//     border-radius: .3em;
-//     font-size: 12px;
-//     cursor: pointer;
-//     font-weight: 500;
-//     transition: background-color ease-in-out .3s;
-//     color: var(--main-text-color);
-//     background-color: transparent;
-//     i {
-//         margin-right: .5em !important;
-//     }
-//     &.icon {
-//         width: 40px;
-//         height: 40px;
-//         padding: 0;
-//         font-size: 1em;
-//         text-align: center;
-//         border-radius: 20px;
-//         i {
-//             margin: 0 !important;
-//         }
-//         &.large {
-//             width: 50px;
-//             height: 50px;
-//             border-radius: 25px;
-//             i {
-//                 font-size: 1.4em;
-//             }
-//         }
-//         &.small {
-//             width: 30px;
-//             height: 30px;
-//             border-radius: 15px;
-//             i {
-//                 font-size: 1em;
-//             }
-//         }
-//     }
-//     &:hover {
-//         background-color: var(--button-plain-hover);
-//     }
-//     &.outline {
-//         background-color: transparent;
-//         border: 1px solid var(--main-text-color);
-//         color: var(--main-text-color);
-//         &:hover {
-//             background-color: var(--main-text-color);
-//             color: var(--btn-fill-color);
-//         }
-//     }
-
-//     &:focus {
-//         border: none;
-//         outline:0;
-//     }
-
-//     i {
-//         color: var(--button-text-plain);
-//         margin-right: .3em;
-//     }
-
-//     &.primary {
-//         background-color: var(--button-primary-color);
-//         color: var(--btn-fill-color);
-//         &:hover {
-//             background-color: var(--button-primary-hover);
-//         }
-//         &.outline {
-//             background-color: transparent;
-//             border: 1px solid var(--button-primary-color);
-//             color: var(--button-primary-color);
-//             &:hover {
-//                 background-color: var(--button-primary-color);
-//                 color: var(--btn-fill-color);
-//             }
-//         }
-//     }
-
-//     &.accent {
-//         background-color: var(--button-secondary-color);
-//         color: var(--btn-fill-color);
-//         &:hover {
-//             background-color: var(--button-secondary-hover);
-//         }
-//         &.outline {
-//             background-color: transparent;
-//             border: 1px solid var(--button-secondary-color);
-//             color: var(--button-secondary-color);
-//             &:hover {
-//                 background-color: var(--button-secondary-color);
-//                 color: var(--btn-fill-color);
-//             }
-//         }
-//     }
-
-//     &.success {
-//         background-color: var(--button-success-color);
-//         color: var(--btn-fill-color);
-//         &:hover {
-//             background-color: var(--button-success-hover);
-//         }
-//         &.outline {
-//             background-color: transparent;
-//             border: 1px solid var(--button-success-color);
-//             color: var(--button-success-color);
-//             &:hover {
-//                 background-color: var(--button-success-color);
-//                 color: var(--btn-fill-color);
-//             }
-//         }
-//     }
-
-//     &.danger {
-//         background-color: var(--button-danger-color);
-//         color: var(--btn-fill-color);
-//         &:hover {
-//             background-color: var(--button-danger-hover);
-//         }
-//         &.outline {
-//             background-color: transparent;
-//             border: 1px solid var(--button-danger-color);
-//             color: var(--button-danger-color);
-//             &:hover {
-//                 background-color: var(--button-danger-color);
-//                 color: var(--btn-fill-color);
-//             }
-//         }
-//     }
-
-//     &.warn {
-//         background-color: var(--button-warn-color);
-//         color: var(--btn-fill-color);
-//         &:hover {
-//             background-color: var(--button-warn-hover);
-//         }
-//         &.outline {
-//             background-color: transparent;
-//             border: 1px solid var(--button-warn-color);
-//             color: var(--button-warn-color);
-//             &:hover {
-//                 background-color: var(--button-warn-color);
-//                 color: var(--btn-fill-color);
-//             }
-//         }
-//     }
-//     &:disabled {
-//         background-color: var(--button-disabled-default-bg);
-//         color: var(--button-disabled-text-color);
-//         &:hover {
-//             background-color: var(--button-disabled-default-bg);
-//             cursor: not-allowed;
-//         }
-//         &.fill {
-//             background-color: var(--button-disabled-default-bg);
-//             // color:#1565c0;
-//         }
-//         &.outline {
-//             background-color: transparent;
-//             border: 1px solid var(--button-disabled-text-color);
-//             color: var(--button-disabled-text-color);
-//             &:hover {
-//                 color: var(--button-disabled-text-color);
-//                 background-color: transparent;
-//             }
-//         }
-//         i {
-//             color: var(--button-disabled-text-color)!important;
-//         }
-//     }
-//     &.large {
-//         font-size: .8em;
-//         i {
-//             font-size: 1em;
-//         }
-//     }
-//     &.small {
-//         font-size: .7em;
-//         i {
-//             font-size: 1.1em;
-//         }
-//     }
-//     &.rounded {
-//         border-radius: 5em;
-//     }
-
-// }
-
-// .alert {
-//     display: flex;
-//     align-items: flex-start;
-//     justify-content: space-between;
-//     color: white;
-//     font-size: 14px;
-//     font-weight: 400;
-//     padding: 1em 1em;
-//     border-radius: 2px;
-//     margin: .7em 0;
-//     .content {
-//         width: 100%;
-//         display: flex;
-//         .message {
-//             width: 100% !important;
-//             margin-left: 15px !important;
-//             h4, p {
-//                 color: white !important;
-//                 margin-bottom: .3em;
-//             }
-//             p {
-//                 font-size: 12px;
-//                 font-weight: 300;
-//             }
-//             h4 {
-//                 font-weight: 500;
-//             }
-//             .btn-action {
-//                 transition: background-color ease-in-out .2s;
-//                 cursor: pointer;
-//                 margin-top: .4em;
-//                 padding: .75em 1.5em;
-//                 border: 0;
-//                 border-radius: .3em;
-//                 font-size: .8em;
-//                 border: 1px solid white !important;
-//                 color: white;
-//                 background-color: transparent;
-//                 &:focus {
-//                     border: none;
-//                     outline:0;
-//                 }
-//             }
-//         }
-//         .icon-container {
-//             margin: auto 0;
-//             i {
-//                 font-size: 1.6em;
-//             }
-//         }
-//     }
-//     .close {
-//         i {
-//             cursor: pointer;
-//             &:hover {
-//                 font-weight: bold;
-//             }
-//         }
-//     }
-//     .text-container {
-//         background-color: yellow !important;
-//         padding-left: 2em;
-//     }
-//     &.danger {
-//         background-color: var(--button-danger-hover);
-//         .btn-action {
-//             &:hover {
-//                 background-color: white;
-//                 color: var(--button-danger-hover) !important;
-//                 i {
-//                     color: var(--button-danger-hover) !important;
-//                 }
-//             }
-//         }
-//     }
-//     &.success {
-//         background-color: var(--button-success-hover);
-//         .btn-action {
-//             &:hover {
-//                 background-color: white;
-//                 color: var(--button-success-hover) !important;
-//                 i {
-//                     color: var(--button-success-hover) !important;
-//                 }
-//             }
-//         }
-//     }
-//     &.warning {
-//         background-color: var(--button-warn-hover);
-//         .btn-action {
-//             &:hover {
-//                 background-color: white;
-//                 color: var(--button-warn-hover) !important;
-//                 i {
-//                     color: var(--button-warn-hover) !important;
-//                 }
-//             }
-//         }
-//     }
-// }
 /************
 * END OVERRIDES
 ************/

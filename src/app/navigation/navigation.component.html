@@ -23,46 +23,60 @@
 
     <div class="sidenav-content" id="content">
         <div class="sidenav-content-header">
-            <button
-                type="button"
-                aria-label="Toggle sidenav"
-                mat-icon-button
-                (click)="toggle()">
-                <mat-icon aria-label="Side nav toggle icon" class="fal fa-bars" style="font-size: 20px"></mat-icon>
-            </button>
+            <div class="flex">
+                <button
+                    type="button"
+                    aria-label="Toggle sidenav"
+                    mat-icon-button
+                    (click)="toggle()">
+                    <i class="fal fa-bars"></i>
+                </button>
+                <div class="pt-2 pl-3">
+                    <h3>Typography</h3>
+                </div>
+            </div>
 
             <div class="d-flex flex a-center">
                 <ng-container appPortalTarget="header"></ng-container>
             </div>
 
-            <div class="avator" [dropdown]="profile">
-                <img src="/assets/images/logo.jpg" alt="avator">
-            </div>
+            <div>
+                <button mat-button  [dropdown]="profile">
+                    <i class="fal fa-bell"></i>
+                </button>
 
-            <app-dropdown #profile borderRadius="medium">
-                <div class="profile row j-start a-center">
-                    <img class="image" src="/assets/images/logo.jpg" alt="avator">
-                    <div class="profile-data px-24 text-center">
-                        <p>{{(useService.user | async)?.name}}</p>
-                        <small>{{(useService.user | async)?.email}}</small>
+
+                <button mat-button [dropdown]="profile">
+                    <i class="fal fa-user-circle"></i>
+                </button>
+
+               
+    
+                <app-dropdown #profile borderRadius="medium">
+                    <div class="profile row j-start a-center">
+                        <img class="image" src="/assets/images/logo.jpg" alt="avator">
+                        <div class="profile-data px-24 text-center">
+                            <p>{{(useService.user | async)?.name}}</p>
+                            <small>{{(useService.user | async)?.email}}</small>
+                        </div>
                     </div>
-                </div>
-                <div class="column actions">
-                    <div class="row item border-bottom" matRipple dropdownItem (click)="changePassword()">
-                        <mat-icon class="fad fa-unlock-alt"></mat-icon>
-                        <p>Change Password</p>
+                    <div class="column actions">
+                        <div class="row item border-bottom" matRipple dropdownItem (click)="changePassword()">
+                            <mat-icon class="fad fa-unlock-alt"></mat-icon>
+                            <p>Change Password</p>
+                        </div>
+                        <div class="row item border-bottom" matRipple (click)="changeTheme()">
+                            <mat-icon class="fad fa-moon"></mat-icon>
+                            <p class="flex mr-1">Change Theme</p>
+                            <i class="fad fa-toggle-{{darkTheme ? 'on' : 'off'}}" style="font-size: 24px"></i>
+                        </div>
+                        <div class="row item" matRipple (click)="logout()">
+                            <mat-icon class="fad fa-sign-out-alt"></mat-icon>
+                            <p>Log Out</p>
+                        </div>
                     </div>
-                    <div class="row item border-bottom" matRipple (click)="changeTheme()">
-                        <mat-icon class="fad fa-moon"></mat-icon>
-                        <p class="flex mr-1">Change Theme</p>
-                        <i class="fad fa-toggle-{{darkTheme ? 'on' : 'off'}}" style="font-size: 24px"></i>
-                    </div>
-                    <div class="row item" matRipple (click)="logout()">
-                        <mat-icon class="fad fa-sign-out-alt"></mat-icon>
-                        <p>Log Out</p>
-                    </div>
-                </div>
-            </app-dropdown>
+                </app-dropdown>
+            </div>
 
         </div>
         <div class="content">

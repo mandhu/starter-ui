@@ -119,6 +119,7 @@
     height: 100%;
     overflow: auto;
     .sidenav-content-header {
+        justify-content: space-between;
         position: sticky;
         top: 0;
         background-color: var(--nav-background);
@@ -133,7 +134,9 @@
         z-index: 104;
         border-bottom: 1px solid var(--main-border-color);
         button {
-            color: var(--main-text-color-1)
+            // color: var(--main-text-color-1);
+            font-size: 1.6em;
+            color: black;
         }
     }
     .content {

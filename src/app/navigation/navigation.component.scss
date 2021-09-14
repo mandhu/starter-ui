@@ -135,8 +135,10 @@
         border-bottom: 1px solid var(--main-border-color);
         button {
             // color: var(--main-text-color-1);
-            font-size: 1.6em;
+            font-size: 1.5em;
             color: black;
+            min-width: unset!important;
+
         }
     }
     .content {

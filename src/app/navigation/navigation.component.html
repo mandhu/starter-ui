@@ -1,7 +1,6 @@
 <div class="app-wrapper">
     <div class="sidenav" [ngClass]="{'hide-sidebar': hideSideBar}">
         <div class="logo">
-            <!--            <mat-icon svgIcon="boxes"></mat-icon>-->
             <img class="img" src="assets/images/logo.jpg" alt="logo">
         </div>
         <div class="nav-links">
@@ -29,10 +28,10 @@
                     aria-label="Toggle sidenav"
                     mat-icon-button
                     (click)="toggle()">
-                    <i class="fal fa-bars"></i>
+                    <i class="fal fa-bars text-white"></i>
                 </button>
                 <div class="pt-2 pl-3">
-                    <h4>Typography</h4>
+                    <h4 class="text-white">Typography</h4>
                 </div>
             </div>
 
@@ -42,12 +41,12 @@
 
             <div>
                 <button mat-button  [dropdown]="notification">
-                    <i class="fal fa-bell"></i>
+                    <i class="fal fa-bell text-white"></i>
                 </button>
 
 
                 <button mat-button [dropdown]="profile">
-                    <i class="fal fa-user-circle"></i>
+                    <i class="fal fa-user-circle text-white"></i>
                 </button>
 
                 <app-dropdown #notification>

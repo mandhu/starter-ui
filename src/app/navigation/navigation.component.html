@@ -32,7 +32,7 @@
                     <i class="fal fa-bars"></i>
                 </button>
                 <div class="pt-2 pl-3">
-                    <h3>Typography</h3>
+                    <h4>Typography</h4>
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
             </div>
 
             <div>
-                <button mat-button  [dropdown]="profile">
+                <button mat-button  [dropdown]="notification">
                     <i class="fal fa-bell"></i>
                 </button>
 
@@ -49,6 +49,12 @@
                 <button mat-button [dropdown]="profile">
                     <i class="fal fa-user-circle"></i>
                 </button>
+
+                <app-dropdown #notification>
+                    <div class="notifications">
+                        <div class="header">Latest Updates</div>
+                    </div>
+                </app-dropdown>
 
     
                 <app-dropdown #profile borderRadius="medium">

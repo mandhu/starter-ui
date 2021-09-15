@@ -58,11 +58,11 @@
 
                 <app-dropdown #profile>
                     <div class="profile-details">
-                        <div class="flex justify-between">
-                            <div>
+                        <div class="flex justify-start">
+                            <div class="mr-3">
                                 <img class="inline-block h-16 w-16 shadow-sm rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
                             </div>
-                            <div class="text-right">
+                            <div class="pt-2">
                                 <p class="mb-0">{{(useService.user | async)?.name}}</p>
                                 <small>{{(useService.user | async)?.email}}</small>
                             </div>

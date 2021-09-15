@@ -62,6 +62,14 @@ code {
     }
 }
 
+.mat-cell {
+    font-size: 1em;
+}
+
+.mat-row, tr.mat-footer-row {
+    height: 41px !important;
+}
+
 
 // Custom
 .form-title {

@@ -55,8 +55,31 @@
                     </div>
                 </app-dropdown>
 
+                <app-dropdown #profile>
+                    <div class="profile-details">
+                        <div class="flex justify-between">
+                            <div>
+                                <img class="inline-block h-16 w-16 shadow-sm rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                            </div>
+                            <div class="text-right">
+                                <p class="mb-0">{{(useService.user | async)?.name}}</p>
+                                <small>{{(useService.user | async)?.email}}</small>
+                            </div>
+                        </div>
+                        <div class="flex justify-center">
+                            <button class="text-2xl" mat-button (click)="changePassword()" >
+                                <i class="fal fa-user-cog"></i>
+                            </button>
+                            <button class="text-2xl" (click)="logout()" mat-button mat-ripple>
+                                <i class="fal fa-lock"></i>
+                            </button>
+                        </div>
+                    </div>
+                </app-dropdown>
+
+
     
-                <app-dropdown #profile borderRadius="medium">
+                <app-dropdown #profisle borderRadius="medium">
                     <div class="profile row j-start a-center">
                         <img class="image" src="/assets/images/logo.jpg" alt="avator">
                         <div class="profile-data px-24 text-center">

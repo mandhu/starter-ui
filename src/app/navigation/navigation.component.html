@@ -30,14 +30,15 @@
                     (click)="toggle()">
                     <i class="fal fa-bars text-white"></i>
                 </button>
-                <div class="pt-2 pl-3">
+                <!-- <div class="pt-2 pl-3">
                     <h4 class="text-white">Typography</h4>
+                </div> -->
+                <div class="d-flex flex a-center">
+                    <ng-container appPortalTarget="header"></ng-container>
                 </div>
             </div>
 
-            <div class="d-flex flex a-center">
-                <ng-container appPortalTarget="header"></ng-container>
-            </div>
+            
 
             <div>
                 <button mat-button  [dropdown]="notification">

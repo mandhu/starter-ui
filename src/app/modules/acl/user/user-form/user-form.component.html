@@ -1,20 +1,24 @@
-<div class="w-500">
-    <div class="dialog-header">
-        <h3 class="title">{{ data.id ? "Edit" : "Add"}} User</h3>
-        <button (click)="close()" mat-icon-button>
-            <i class="fal fa-times"></i>
-        </button>
+<div class="w-800">
+    <div style="background-color: #21293e;" class="w-full  text-white px-6 py-4 border-gray-100 shadow-sm border-b-2 flex justify-between">
+        <div class="form-title">
+            <p>{{ data.id ? "Edit" : "Add"}} User</p>
+        </div>
+        <div>
+            <button  class="form-close" (click)="close()" mat-icon-button>
+                <i class="fal fa-times"></i>
+            </button>
+        </div>
     </div>
-    <div>
-        <form [formGroup]="form" class="column form-padding">
+    <div class="p-12">
+        <form [formGroup]="form" class="grid grid-cols-3 gap-4 text-sm">
 
-            <mat-form-field appearance="outline">
+            <mat-form-field class="col-span-3" appearance="outline">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Enter Name" formControlName="name" required>
                 <mat-error>Name is <strong>required</strong></mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field class="col-span-2" appearance="outline">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Enter email" formControlName="email" required>
                 <mat-error *ngIf="form.get('email').errors?.required">Email is <strong>required</strong></mat-error>
@@ -28,7 +32,7 @@
                 <mat-error>Password is <strong>required</strong></mat-error>
             </mat-form-field>
 
-            <div class="w-100 row j-end a-center">
+            <div class="col-span-3 flex justify-end w-full">
                 <button type="button" (click)="close()" class="btn plain mr-1">Cancel</button>
                 <button (click)="submit()" class="btn primary" [disabled]="form.invalid">{{ data.id ? "Update" : "Add"}}</button>
             </div>

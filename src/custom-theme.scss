@@ -1,5 +1,6 @@
-@use '~@angular/material' as mat;
-@import '~ngx-mat-slide-panel/src/lib/mat-slide-panel-theme.scss';
+@use '@angular/material' as mat;
+@import 'node_modules/ngx-mat-slide-panel/src/lib/mat-slide-panel-theme';
+
 
 // Plus imports for other components in your app.
 

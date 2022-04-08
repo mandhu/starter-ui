@@ -5,18 +5,69 @@
             <img class="img" src="assets/images/logo.jpg" alt="logo">
         </div>
         <div class="nav-links">
-            <ng-template [ngForOf]="userMenu" let-item ngFor>
+            <ng-template [ngForOf]="(navigationService.menu | async)" let-item ngFor>
                 <div class="nav-item">
-                    <div *ngIf="item.children.length" class="menu-link" matRipple routerLinkActive="active" (click)="openAsidePanel(item)">
-                         <i [class]="'nav-icon fad fa-'+item.icon"></i>
-                        <span>{{item?.name}}</span>
-                    </div>
+<!--                    <div *ngIf="item.children.length" class="menu-link" matRipple routerLinkActive="active" (click)="openAsidePanel(item)">-->
+<!--                         <i [class]="'nav-icon fad fa-'+item.icon"></i>-->
+<!--                        <span>{{item?.name}}</span>-->
+<!--                    </div>-->
 
-                    <div *ngIf="!item.children.length" class="menu-link no-outline" matRipple routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="item.link">
-                        <i [class]="'nav-icon fad fa-'+item.icon" ></i>
-                        <span>{{item?.name}}</span>
-                    </div>
+                    <ng-container *ngIf="navigationService.desktop">
+                        <a class="menu-link" matRipple [ngClass]="{'active': activeMenu == item?.key}" [routerLink]="item.link">
+                            <i [class]="'nav-icon fad fa-'+item.icon"></i>
+                            <span>{{item?.name}}</span>
+                        </a>
+                    </ng-container>
+                    <ng-container *ngIf="!navigationService.desktop">
+                        <a class="menu-link" matRipple [ngClass]="{'active': activeMenu == item?.key}" (click)="openAsidePanel(item)">
+                            <i [class]="'nav-icon fad fa-'+item.icon"></i>
+                            <span>{{item?.name}}</span>
+                        </a>
+                    </ng-container>
+
+<!--                    <div *ngIf="!item.children.length" class="menu-link no-outline" matRipple routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="item.link">-->
+<!--                        <i [class]="'nav-icon fad fa-'+item.icon" ></i>-->
+<!--                        <span>{{item?.name}}</span>-->
+<!--                    </div>-->
                 </div>
+<!--                <div class="nav-item" *ngIf="!item.children.length && !item.parent">-->
+<!--                    <div class="menu-link no-outline" matRipple [ngClass]="{'active': activeMenu == item?.key}" [routerLink]="item.link">-->
+<!--                        <i [class]="'nav-icon fad fa-'+item.icon" ></i>-->
+<!--                        <span>{{item?.name}}</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </ng-template>
+        </div>
+    </div>
+
+    <div class="sub-navs" [class.show-subnav]="subMenu">
+        <div class="aside-nav-items">
+            <h4 class="text-color" style="margin-top: 3px; padding: 0 1em 0 2em">{{selectedMenu?.name}}</h4>
+            <ng-template ngFor let-menu [ngForOf]="selectedMenu?.children">
+
+                <ng-container *ngIf="menu.children.length; else otherMenu">
+                    <app-collapse-item [url]="url" [key]="menu.name" [icon]="menu.icon" [title]="menu.name">
+                        <a class="aside-item"
+                           appCollapseItem matRipple
+                           *ngFor="let item of menu.children"
+                           [ngClass]="{'active': item.link == url}"
+                           [routerLink]="item.link">
+                            <span class="name small" style="padding-left: 40px">{{item.name}}</span>
+                        </a>
+
+                    </app-collapse-item>
+                </ng-container>
+
+                <ng-template #otherMenu>
+                    <a class="aside-item"
+                       matRipple
+                       [ngClass]="{'active': menu.link == url}"
+                       [routerLink]="menu.link">
+                        <i [class]="'icon fal fa-'+menu.icon"></i>
+                        <span class="name">{{menu.name}}</span>
+                    </a>
+                </ng-template>
+
             </ng-template>
         </div>
     </div>
@@ -76,8 +127,8 @@
 <div
     class="navigation-aside"
     *ngIf="openAside"
-    @fadeInLeft
-    @fadeOutLeft
+    [@fadeInLeft]="position === 'left'"
+    [@fadeOutLeft]="position === 'left'"
 >
     <div class="aside-nav-items">
         <ng-template ngFor let-menu [ngForOf]="selectedMenu?.children">

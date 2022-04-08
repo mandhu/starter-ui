@@ -5,9 +5,10 @@ import { OverlayContainer, ScrollStrategy, ScrollStrategyOptions } from '@angula
 import { DropdownDirective } from '../components/dropdown/dropdown.directive';
 import {DEFAULT_MENU} from './menu';
 import {UserService} from '../modules/acl/user/user.service';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import {MatDialog} from '@angular/material/dialog';
+import {NavigationService} from './navigation.service';
 
 interface Menu {
     icon: string;
@@ -30,9 +31,9 @@ export class NavigationComponent implements OnInit {
     hideSideBar = false;
     activeMenu = null;
     selectedMenu: Menu;
-    menus: Menu[] = DEFAULT_MENU;
-    userMenu: Menu[];
+    subMenu = true;
     url = null;
+    position = 'left';
     openAside = false;
     private overlay: HTMLElement | null;
     private player: AnimationPlayer;
@@ -48,6 +49,7 @@ export class NavigationComponent implements OnInit {
         public useService: UserService,
         private router: Router,
         private dialog: MatDialog,
+        public navigationService: NavigationService,
         private scrollStrategyOptions: ScrollStrategyOptions,
         overlayContainer: OverlayContainer
     ) {
@@ -59,85 +61,58 @@ export class NavigationComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.setCurrentActiveMenu(this.router.url);
         this.useService.getSetting();
-        this.router.events.subscribe(res => {
-            if (this.openAside) {
-                this.handleOverlayClick();
+        this.router.events.subscribe((res: NavigationEnd) => {
+            this.setCurrentActiveMenu(res.url);
+            if (this.openAside && res instanceof NavigationEnd) {
+                this.openAside = false;
+                this.hideAOverlay();
             }
         });
-
-        this.userMenu = this.menus;
-        // this.useService.userPermissions.subscribe((permissions: string[]) => {
-        //     if (permissions.length) {
-        //         this.buildMenu(permissions);
-        //     }
-        // });
     }
 
-    buildMenu(data): any {
-        this.userMenu = this.menus.map(menu => {
-            // console.log(menu);
-            if (menu.children.length) {
-                const childMenus = menu.children.map(child => {
-                    if (child.parent) {
-                        const childMenu = child.children.map(kid => {
-                            if (!!data.find(perm => perm === kid.permissions)) {
-                                return kid;
-                            }
-                        }).filter(item => item);
-                        return {
-                            ...child,
-                            children: childMenu
-                        };
-                    } else {
-                        if (!!data.find(perm => perm === child.permissions)) {
-                            return child;
-                        }
-                    }
-                }).filter(item => {
-                    if (!item) {
-                        return false;
-                    }
-                    if (!item.parent) {
-                        return true;
-                    }
-                    return !!item.children.length;
-                });
-
-
-                return {
-                    ...menu,
-                    children: childMenus
-                };
-            } else {
-                if (!!data.find(perm => perm === menu.permissions)) {
-                    return menu;
-                }
-            }
-
-        }).filter(item => item);
+    private setCurrentActiveMenu(url): void {
+        if (url) {
+            this.url = url;
+            const urls = url.split('/');
+            this.activeMenu = urls[1] || 'dashboard';
+            // this.selectedMenu = this.userMenus.find(menu => menu.key === this.activeMenu);
+            this.selectedMenu = this.navigationService.getActiveMenu(this.activeMenu);
+            this.subMenu = this.navigationService.desktop && this.selectedMenu?.children?.length > 0;
+        }
     }
-
-
 
     openAsidePanel(item: Menu): void {
         if (this.selectedMenu === item && this.openAside) {
-            this.handleOverlayClick();
             return;
         }
 
         this.selectedMenu = item;
+        if (!item.children.length) {
+            this.handleOverlayClick();
+            this.router.navigate([item.link]);
+            return;
+        }
 
-        this.openAside = true;
-        if (this.openAside) {
-            this.showOverlay();
+        if (this.navigationService.desktop) {
+            this.subMenu = true;
         } else {
-            this.hideAOverlay();
+            this.openAside = true;
+            if (this.openAside) {
+                this.showOverlay();
+            } else {
+                this.hideAOverlay();
+            }
         }
     }
 
     toggle(): void {
-        this.hideSideBar = !this.hideSideBar;
+        if (this.subMenu) {
+            this.subMenu = false;
+        } else {
+            this.hideSideBar = !this.hideSideBar;
+        }
     }
 
     handleOverlayClick(): void {

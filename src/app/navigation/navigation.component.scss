@@ -88,6 +88,18 @@
         }
     }
 }
+.sub-navs {
+    display: flex;
+    flex-direction: column;
+    border-right: solid 1px var(--main-border-color);
+    width: 250px;
+    min-width: 250px;
+    margin-left: -251px;
+    transition: margin .2s ease-in
+}
+.show-subnav {
+    margin-left: 0px;
+}
 .navigation-aside {
     background-color: var(--nav-background);
     position: absolute;
@@ -191,5 +203,71 @@
             cursor: pointer
             background var(--main-hover-background)
         }
+    }
+}
+
+.aside-nav-items {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    .menu-heading {
+        padding: 0 1em 1em 1.4em;
+        font-size: 1.2em;
+        color: var(--main-text-color-1) //#475569
+    }
+    .aside-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 12px 24px;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+        text-decoration: none;
+        outline: none;
+        cursor: pointer;
+        transition: background-color 375ms cubic-bezier(.25,.8,.25,1);
+        .icon {
+            color: var(--main-text-color-3); //#97a6ba;
+            margin-right: 16px;
+            width: 20px;
+            line-height: 21px;
+            font-size: 16px;
+            transition: color 375ms cubic-bezier(.25,.8,.25,1);
+        }
+        .name {
+            color: var(--main-text-color-1); //#475569;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 20px;
+            transition: color 375ms cubic-bezier(.25,.8,.25,1);
+            &.small {
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 16px
+            }
+        }
+        &.active {
+            background-color: var(--nav-active-background); //#e2e8f0;
+            .icon {
+                color: var(--main-text-color-1); //#64748b
+            }
+            .name {
+                color: var(--main-text-color); //#1a202e
+            }
+        }
+        &:hover {
+            background-color: var(--nav-hover-background);
+            .icon {
+                color: var(--main-text-color-1) //#64748b
+            }
+            .name {
+                color: var(--main-text-color) //#1a202e
+            }
+        }
+    }
+    .collapse-item {
+        padding: 10px 16px 10px 64px;
     }
 }

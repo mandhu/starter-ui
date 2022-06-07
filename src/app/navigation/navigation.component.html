@@ -7,11 +7,6 @@
         <div class="nav-links">
             <ng-template [ngForOf]="(navigationService.menu | async)" let-item ngFor>
                 <div class="nav-item">
-<!--                    <div *ngIf="item.children.length" class="menu-link" matRipple routerLinkActive="active" (click)="openAsidePanel(item)">-->
-<!--                         <i [class]="'nav-icon fad fa-'+item.icon"></i>-->
-<!--                        <span>{{item?.name}}</span>-->
-<!--                    </div>-->
-
                     <ng-container *ngIf="navigationService.desktop">
                         <a class="menu-link" matRipple [ngClass]="{'active': activeMenu == item?.key}" [routerLink]="item.link">
                             <i [class]="'nav-icon fad fa-'+item.icon"></i>
@@ -24,18 +19,7 @@
                             <span>{{item?.name}}</span>
                         </a>
                     </ng-container>
-
-<!--                    <div *ngIf="!item.children.length" class="menu-link no-outline" matRipple routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="item.link">-->
-<!--                        <i [class]="'nav-icon fad fa-'+item.icon" ></i>-->
-<!--                        <span>{{item?.name}}</span>-->
-<!--                    </div>-->
                 </div>
-<!--                <div class="nav-item" *ngIf="!item.children.length && !item.parent">-->
-<!--                    <div class="menu-link no-outline" matRipple [ngClass]="{'active': activeMenu == item?.key}" [routerLink]="item.link">-->
-<!--                        <i [class]="'nav-icon fad fa-'+item.icon" ></i>-->
-<!--                        <span>{{item?.name}}</span>-->
-<!--                    </div>-->
-<!--                </div>-->
             </ng-template>
         </div>
     </div>

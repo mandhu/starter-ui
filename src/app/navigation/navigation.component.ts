@@ -1,9 +1,7 @@
-import { ChangeDetectorRef, Component, ElementRef, HostBinding, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { fadeInLeft, fadeOutLeft } from '../animations/fade';
-import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
-import { OverlayContainer, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
-import { DropdownDirective } from '../components/dropdown/dropdown.directive';
-import {DEFAULT_MENU} from './menu';
+import {ChangeDetectorRef, Component, ElementRef, HostBinding, OnInit, Renderer2} from '@angular/core';
+import {fadeInLeft, fadeOutLeft} from '../animations/fade';
+import {animate, AnimationBuilder, AnimationPlayer, style} from '@angular/animations';
+import {OverlayContainer, ScrollStrategy, ScrollStrategyOptions} from '@angular/cdk/overlay';
 import {UserService} from '../modules/acl/user/user.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {ChangePasswordComponent} from './change-password/change-password.component';
